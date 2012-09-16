@@ -1,0 +1,21 @@
+3.SOCIAL NETWORK AND USER BEHAVIOR
+========================================================
+
+3.1 Social Network
+---------------------
+Social networking servers have applied to the lots of the Websites,such as Gowalla,Quora.In this website,users are becoming the friendship network,almostly different users have their own friends.There are also user A and user B have the same friend user C.Simply,more same friends between A and B mean quite a lot similar.However,if both user A and user B have the same  numbers of the friends with user C,the amount friends of A and B need to take into consideration.
+```{r graph1 fig.width=7, fig.height=6,echo=FALSE}
+library(igraph)
+dat=graph(c(1,3,2,3,2,4,2,5,1,6,1,7,1,8,1,9),directed=FALSE)
+V(dat)$names=c("A","B","C","U","V","W","X","Y","Z")
+V(dat)$col=c("red","yellow","green","yellow","yellow","red","red","red","red")
+set.seed(907)
+plot(dat, layout=layout.fruchterman.reingold,vertex.size = 40, vertex.color=V(dat)$col,vertex.label = V(dat)$names,vertex.label.cex=1.8,
+     vertex.label.color="black",edge.color = grey(0.5), edge.arrow.mode = "-")
+```
+
+Here, we propose the __Jaccard Similarity Coefficient(JSC)__ to measue each two users' similarity in the social network.We use the  notation __V(A)__ express the all ids of the A's friends
+                
+$JSC(A,B)=\frac{|V(A) \cap V(B)|}{|V(A) \cup V(B)|}$
+
+
