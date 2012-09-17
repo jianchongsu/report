@@ -206,28 +206,21 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
+<pre><code>## [1] &quot;HHT&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;TTH&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
 <pre><code>## [1] &quot;HTT&quot;
-</code></pre>
-
-<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = &quot;&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;TTH&quot;
-</code></pre>
-
-<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = &quot;&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;HHH&quot;
-</code></pre>
-
-<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = &quot;&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;TTH&quot;
 </code></pre>
 
 <pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
@@ -241,14 +234,21 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;HHH&quot;
+<pre><code>## [1] &quot;THT&quot;
 </code></pre>
 
 <pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;HTH&quot;
+<pre><code>## [1] &quot;THH&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;TTH&quot;
 </code></pre>
 
 <h3>定义2.1.1  有限概率空间包含样本空间\( \Omega \) 和概率测度<strong>P</strong>：</h3>
@@ -311,6 +311,16 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 <p>设X为定义在有限概率空间上的随机变量，\( \varphi(x) \)为哑变量 x 的凸函数（convex），则有：</p>
 
 <p>\( \varphi(EX) \le E[\varphi(X)] \)</p>
+
+<pre><code class="r">x = seq(from = 0, to = 10, length = 100)
+y = x^2
+plot(x, y, type = &quot;l&quot;, col = &quot;blue&quot;, main = &quot;凸函攼&lt;U+3E36&gt;&lt;U+393C&gt;&lt;U+3E35&gt;abline(a = -25, b = 10, col = &quot;red&quot;)
+abline(a = -35, b = 10, col = &quot;green&quot;)
+abline(a = -18, b = 10, col = &quot;green&quot;)
+points(5, 25, pch = 19, col = &quot;red&quot;, cex = 2)
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAhFBMVEX9/v0AAAAAADkAAGUAAP8AOTkAOY8AZrUA/wA5AAA5ADk5AGU5OWU5OY85j9pMTUxlAABlADllAGVlOQBlOY9lZmVltf2LjIuPOQCPOTmPZgCPtY+P29qP2/2xsrG1ZgC1/rW1/v3ajzna24/a/tra/v39tWX924/9/rX9/tr9/v3/AADO6MnRAAAALHRSTlP///////////////////////////////////////////////////////8A/3nwG3MAAAAJcEhZcwAACxIAAAsSAdLdfvwAAA6rSURBVHic7d2Bdtu2FYDhKdUSeV0cN9tcZ1vqxVssWX7/95tISaQoAhBIXJLAvf9/eqK4tnHsfIYI0JL4pz2Z7E9LfwG0TMAbDXijAW804I0GvNGANxrwRgPeaMAbDXijAW804I0GvNGANxrwRgPeaMAbDXijAW804I0GvNGANxrwh1bnmrfbP7VmFb4rffpf55vmP8XZhd+3c/r8xnmmH38kgNfYBfxpfn9pJvpJvneXoCrg6z9Xv6++NLO8mfCK3YFv/vxy/nsz4YHX1vlOvBG+nPHn//44/D/gdXUB2kp/aeb4eXkPvLau4eu5/uVE3Wz0gFdXb8bvL4/x+/buH3hd9eEPU/xycdfd5qsM+I5vcwrn6sP0ZRT+ou5bx5n+x3lbt/RXOl1G4V1/Pb15wv9d+Vlbk/AEvNmANxrwRgPeaMAbDXijAW804I0GvNGANxrwRgPeaMAbDXijAW804I0GvNGANxrwRgPeaCnwK8q5CeETPpemDnijAW+0ZPjtXX3E+OXH0KFp0VLh354e69vXjz8HDk2Llgq/+/qjcxs/NC0aM95oycf43QPH+BJjVW804I3Gds5oLO6MNsF2LvLXADRv6+6bzHgjXbmznbOSOLw/4DPq2h14IwFvs5478DaShz+t7VyrO+Czqe+ePuPfnu497wE+lxzuAnf1u9++u98BfC5NA+8N+ExyuQNvIOBt5nQHXn/A28ztDrz2PO7Aaw94m/ncgVce8DbzugOvO+Bt5ncHXnMBd+A1B7zNQu7AKw54mwXdgdcb8DYLuwOvtRvuwGsNeJvdcgdeacDb7KY78DoD3ma33YFXGfA2i3AHXmPA2yzGHXiFAW+zKHfg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" alt="plot of chunk jensen"/> </p>
 
 <p>由Jensen不等式，直接可得：<br/>
 \( (EX)^2 \le E[X^2] \)</p>

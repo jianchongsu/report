@@ -25,34 +25,25 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
+## [1] "HHT"
+```
+
+```r
+paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = "")
+```
+
+```
+## [1] "TTH"
+```
+
+```r
+paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = "")
+```
+
+```
 ## [1] "HTT"
-```
-
-```r
-paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = "")
-```
-
-```
-## [1] "TTH"
-```
-
-```r
-paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = "")
-```
-
-```
-## [1] "HHH"
-```
-
-```r
-paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = "")
-```
-
-```
-## [1] "TTH"
 ```
 
 ```r
@@ -70,7 +61,7 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
-## [1] "HHH"
+## [1] "THT"
 ```
 
 ```r
@@ -79,7 +70,16 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
-## [1] "HTH"
+## [1] "THH"
+```
+
+```r
+paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = "")
+```
+
+```
+## [1] "TTH"
 ```
 
 
@@ -141,6 +141,18 @@ $Var(X)=E(X-EX)^2$
 
 
 $\varphi(EX) \le E[\varphi(X)]$
+
+```r
+x = seq(from = 0, to = 10, length = 100)
+y = x^2
+plot(x, y, type = "l", col = "blue", main = "凸函攼<U+3E36><U+393C><U+3E35>abline(a = -25, b = 10, col = "red")
+abline(a = -35, b = 10, col = "green")
+abline(a = -18, b = 10, col = "green")
+points(5, 25, pch = 19, col = "red", cex = 2)
+```
+
+![plot of chunk jensen](figure/jensen.png) 
+
 
 由Jensen不等式，直接可得：
 $(EX)^2 \le E[X^2]$

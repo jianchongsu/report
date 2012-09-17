@@ -99,6 +99,16 @@ $Var(X)=E(X-EX)^2$
 
 
 $\varphi(EX) \le E[\varphi(X)]$
+```{r jensen,warning=F}
+x=seq(from=0,to=10,length=100)
+y=x^2
+plot(x,y,type="l",col="blue",main="凸函数")
+abline(a=-25,b=10,col="red")
+abline(a=-35,b=10,col="green")
+abline(a=-18,b=10,col="green")
+points(5,25,pch=19,col="red",cex=2)
+
+```
 
 由Jensen不等式，直接可得：
 $(EX)^2 \le E[X^2]$
