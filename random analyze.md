@@ -25,7 +25,7 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
-## [1] "HTH"
+## [1] "HTT"
 ```
 
 ```r
@@ -34,7 +34,7 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
-## [1] "HTH"
+## [1] "TTH"
 ```
 
 ```r
@@ -43,7 +43,16 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
-## [1] "THT"
+## [1] "HHH"
+```
+
+```r
+paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = "")
+```
+
+```
+## [1] "TTH"
 ```
 
 ```r
@@ -61,25 +70,16 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
+## [1] "HHH"
+```
+
+```r
+paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = "")
+```
+
+```
 ## [1] "HTH"
-```
-
-```r
-paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = "")
-```
-
-```
-## [1] "TTT"
-```
-
-```r
-paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = "")
-```
-
-```
-## [1] "TTH"
 ```
 
 
@@ -309,7 +309,7 @@ $\cfrac{V_n}{(1+r)^n}=\tilde{E_n}\cfrac{V_{n+1}}{(1+r)^{n+1}}$…………………… *
 ### 定理2.4.8（现金流定价）
 考虑N时段二叉树资产定价模型，其中0<d<1+r<u,并且存在风险中性概率测度$\tilde{P}$。设$C_0,C_1,\cdot\cdot\cdot,C_N$为随机变量序列，其中$C_n$之依赖于$\omega_1\cdot\cdot\cdot\omega_n$。在时刻n,…,N,相应的支付分别为$C_n,\cdot\cdot\cdot,C_N$的衍生证券在时刻n的价格为：
 
-$V_n=\tilde{E_n}[\sum_{k=n}^N\cfrac{C_k}{(1+r)^{k-n}}]$,n=0,1,\cdot\cdot\cdot,N…………………… **(2.4.13)**
+$V_n=\tilde{E_n}[\sum_{k=n}^N\cfrac{C_k}{(1+r)^{k-n}}],n=0,1,\cdot\cdot\cdot,N$…………………… **(2.4.13)**
 价格过程$V_n$，n=0,1,……,N满足：
 
 $C_n(\omega_1\cdot\cdot\cdot\omega_n)=V_n(\omega_1\cdot\cdot\cdot\omega_n)-\frac{1}{1+r}[\tilde{p}S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nH)+\tilde{q}S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nT)]$…………………… **(2.4.14)**

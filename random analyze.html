@@ -206,21 +206,28 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;HTH&quot;
+<pre><code>## [1] &quot;HTT&quot;
 </code></pre>
 
 <pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;HTH&quot;
+<pre><code>## [1] &quot;TTH&quot;
 </code></pre>
 
 <pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;THT&quot;
+<pre><code>## [1] &quot;HHH&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;TTH&quot;
 </code></pre>
 
 <pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
@@ -234,21 +241,14 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
+<pre><code>## [1] &quot;HHH&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
 <pre><code>## [1] &quot;HTH&quot;
-</code></pre>
-
-<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = &quot;&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;TTT&quot;
-</code></pre>
-
-<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = &quot;&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;TTH&quot;
 </code></pre>
 
 <h3>定义2.1.1  有限概率空间包含样本空间\( \Omega \) 和概率测度<strong>P</strong>：</h3>
@@ -480,7 +480,7 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 
 <p>考虑N时段二叉树资产定价模型，其中0&lt;d&lt;1+r&lt;u,并且存在风险中性概率测度\( \tilde{P} \)。设\( C_0,C_1,\cdot\cdot\cdot,C_N \)为随机变量序列，其中\( C_n \)之依赖于\( \omega_1\cdot\cdot\cdot\omega_n \)。在时刻n,…,N,相应的支付分别为\( C_n,\cdot\cdot\cdot,C_N \)的衍生证券在时刻n的价格为：</p>
 
-<p>\( V_n=\tilde{E_n}[\sum_{k=n}^N\cfrac{C_k}{(1+r)^{k-n}}] \),n=0,1,\cdot\cdot\cdot,N…………………… <strong>(2.4.13)</strong><br/>
+<p>\( V_n=\tilde{E_n}[\sum_{k=n}^N\cfrac{C_k}{(1+r)^{k-n}}],n=0,1,\cdot\cdot\cdot,N \)…………………… <strong>(2.4.13)</strong><br/>
 价格过程\( V_n \)，n=0,1,……,N满足：</p>
 
 <p>\( C_n(\omega_1\cdot\cdot\cdot\omega_n)=V_n(\omega_1\cdot\cdot\cdot\omega_n)-\frac{1}{1+r}[\tilde{p}S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nH)+\tilde{q}S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nT)] \)…………………… <strong>(2.4.14)</strong></p>
