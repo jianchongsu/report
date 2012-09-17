@@ -194,7 +194,7 @@ hljs.initHighlightingOnLoad();
 
 <p>设每次抛掷出现正面的概率为<strong>p</strong>,出现背面的概率为<strong>q=1-p</strong>,假设投掷过程是<strong>相互独立</strong>的。</p>
 
-<p>由此\( \Omega \) 中每个元素\( \omega \) (三次抛掷的结果序列)的概率都是可以出来；</p>
+<p>由此样本空间\( \Omega \) 中每个元素\( \omega \) (三次抛掷的结果序列)的概率都是可以出来；</p>
 
 <h3>我们称\( \Omega \)中的子集为<strong>事件</strong></h3>
 
@@ -206,14 +206,21 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;HHT&quot;
+<pre><code>## [1] &quot;TTT&quot;
 </code></pre>
 
 <pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;TTH&quot;
+<pre><code>## [1] &quot;HTH&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;HHT&quot;
 </code></pre>
 
 <pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
@@ -227,7 +234,14 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
     1, replace = T), sep = &quot;&quot;)
 </code></pre>
 
-<pre><code>## [1] &quot;HHT&quot;
+<pre><code>## [1] &quot;HHH&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;TTT&quot;
 </code></pre>
 
 <pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
@@ -235,20 +249,6 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 </code></pre>
 
 <pre><code>## [1] &quot;THT&quot;
-</code></pre>
-
-<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = &quot;&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;THH&quot;
-</code></pre>
-
-<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = &quot;&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;TTH&quot;
 </code></pre>
 
 <h3>定义2.1.1  有限概率空间包含样本空间\( \Omega \) 和概率测度<strong>P</strong>：</h3>
@@ -263,17 +263,17 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 
 <p>其中</p>
 
-<p>\( P(\omega)=1 \) …………………… <strong>(2.1.6)</strong></p>
+<p>\( P(\Omega)=1 \) …………………… <strong>(2.1.6)</strong></p>
 
 <h2>2.2 随机变量、分布和期望</h2>
 
 <h3>定义2.2.1：</h3>
 
-<p>设\( （\omega，P） \)为有限概率空间，<strong>随机变量</strong>为定义为\( \omega \)上的一个实值函数</p>
+<p>设\( （\Omega，P） \)为有限概率空间，<strong>随机变量</strong>为定义为\( \omega \)上的一个实值函数</p>
 
 <h4>下图为1.2.2</h4>
 
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAABPlBMVEX9/v0AAP4AAP8AHcIAOf4AZv4A60gA/wAA/x0A/zkA/2UA/48A/7UA//4A//8dAP8dwm4d/wAd/zMd//8zrYA5AP45AP85Zv45j/05j/45/wA5/zk5/2U5/7U5/9o5//05//45//9Il4BI6x1cgIBcwsJlAP9lOf5ltf1l/v1l/wBl/zll/49l/9pl//5l//9ugICAbsKAgG6AgICAgJeAl0iAl8KArTOPOf+Ptf2P2/2P/v2P/wCP/zmP//+XSB21Zv+1j/61/v21/wC1/4+1//61///aj/7aj//a2/3a/tra/v3a/zna/2Xa//7a///9jzn9j2X9tWX9tf7924/92/79/mX9/o/9/rX9/tr9/v39/v7+AAD+OQD+OY/+ZgD+j4/+tf3+2/3+/v3/AAD/ADn/AGX/OY//ZrX/j9pcsq7WAAAAanRSTlP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8A////////////////////nJcKuQAAAAlwSFlzAAALEgAACxIB0t1+/AAAF5VJREFUeJztnQt748Z1hmN2VVreFdO0taxsam3WTWRZtrOOWbc0JSvY1VqmI260NU2KGth1L9sm+f9/oHMDCIg3kZwBzuH53ufxEgPA0mDeOYOZwQj8mQIi+VndGQD1APFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihVCp++N79z+10o2UDqDjik0ajcaCeX+nN9KjReOtFtv/B1XC/MaG7KJUeHUTIGsiIIL5jTPcaD66c99x8b0fH/LsvzF5zbLjfXZTSPwfmIxJefK9xbD+MwOTYyrc7Bsb/wGw6uXp7UcpsHgfPHMgILz5pdM1H+qEW+K3ZGjScURPAg67K5Q6/XJRSvu6AOMQQ73w9z6zZJlzr72ZneLlLU8N9hHw0wos3fbRucUdiU528j3dv8enRTvDcAU+Ezt1A9+eK9qzxstD7iS9WFhCYGMM525f3wZrYsZlpB3YKx+8pPik3HSAgcSZwikE/sJuDBsSTItbMXWLmcBzDfd1iQzwxwov/pms/epP7fKLFo6knRoQJHDcGKxg043F07ogRQbyzNdzPZ1w7piokGM6RIsaUrWmgrUDdvdebidVXmMAZlAb681OYwIlIlHt8JxvOmY2Gt5c9c3EP4bL4X5TClG1EqnseP1hww27P2omHNDGpcCHGogBuz1CPx7IxqXIFTm9RJ31KfQc9u5gQWnpVVo+lV3EhtdhyVoMP4kBK/JxeHogAMfEI+qqgJh7qK4KeeKivBIriob4CaIqH+uhQFY8OfmToikfQR4WweKiPCWnxUB8P4uJxq48FefEwHwf64tHcR4GBeKiPAQvxUB8eJuKhPjRsxKOXFxZG4hH0IeEkHuoDwks82vtgcBOPoA8EO/FQHwaG4qE+BCzFQ/3mMBUP9ZvCVjzUbwZj8VC/CazFY1i/PszFF4L+5v0Fp91+dVpBZjjBTvxFs9k8VC/NOxbGJ83m7qk3f/Hw6uZxM2f3tJwanxzWmm1yMBN/e/bOC6X6zYdavDf7kQ36/iO9459emNpgj/3qtJzS/yfMF2Emvt/8yH5ondakDnq92VYjUx9G5phTrbfLKbP5UZ05pwYz8Re79l49/uRK3Xxqt07MHteQ35yqXPXNaTmlXG0BGdzEN529l7lDWxVGu3nfzauekbp5jJCfwEy8vq/vlvvnF7qRd3d+x3zx45NHFeSQC8zEq5HuzpXNHt7VO098sXoAbuLtGK45CV3bq7t5/KhwfJ74rIMADOzEl4N+/PGp3QPxq8JQvJ3E8YPyC9tfg/jVYSb+lVPX9yHfd/7R1K8OM/F9NyLL5mV83KNztzrcxDt3N4+N8pGNczOZc4Hh3KpwE990E3VG58g/gfm7drswgTOaDPTbpRQmcEowE//q9PbMD+f63vvbp2ryBMY9uMni/4tfFFOYsi3CTPwU/nn8aM7tu7BGBw9pSvAWP/E6N5yzU/BYtgxn8aUld/25Xfa2Oe/2DD27EnzF311puWjpVfvzf8YQvgxX8SsvsMWyzDI8xa+zrhprsUtwFL+uQqgvwE/8JvqgPoeb+E3VQb2Hl/gQ2qDewkl8KGVtuOckPqgtqOciPrgp6WHPRHwUSaLVsxAfzZBg9QzER7UjtsUnLz6+GJnqaYuvKB4lqictvjof8tRTFl+pDGnq6Yqv3ISsfh5R8TVJEKSepPgay1+MeoLiay57IerJiSdQ7gSyEB9i4omUOZFsxISWeDrlvfXqKYmnVdi0chMcOuLpFTS9HAWEiniahUwzV0EgIZ7wnBnhrG0GAfHUi5Z6/tajdvEcinUbw75m8WxKlE1G70u94jmV5papr1M8t6Lklt+FRBY/fG/uoeli7HRjZiUEW6Q+jPik0WgcqOfmNTTpUaPxVvZWkuTBVUcfajy4UsN9s3HgPjzdcio9OgiSm5jMVp/+upw+p//+jSDiO8Z0z+i13nPzvR39j5bbtamB9f/uC3PS31yZA12feuBS+gfRNn/ZarWetH/7mU88yffvXaVPWxNO02dP5v4QIoQQ32sc2w/jLzm28u2OgfPf8dVguK/rwcAccar1djllNo8D5CcW53v6Qq5be1c67FNTB/z+6z0T86YKP9szdf+pjvdz6uZDiE9cSKcf6qv+1mwNGk6oi9+y+K7KVQ+/LKeUrzxEuW7ZF+VdG7l6ZJ9m4lNTH1JzzIm32+kz4m/VCyPe6XqeSbMtuNbftamSeItXPSM13Kcb8pcte+dOf+dym4l3zXp6qibizbatH4QJId500brFHYlNZcJXEZ8e7SiqXLacy6/viG/lPTkv3m0/pR3yQTp3A9dx96RH1nTucxXx+ckEMf23Qm89E2/v/H5XUfyzvQrztjphhnO2L++1JnZoVvDcyQds9xCflNsOUpgOXcGsE39H9uRKChWCIqEmcIpBP7Cbg8zzShFPWbwWa9RnCS/+6V7heEH8ZYv0YD7czF1i5nAcw33tegvFl4I+E9+SK/6brv3oTe7ziXY9aeq3SLydxMk6deLF99wQrCDQDMe3rnP3Jyfy2oc8mnrVc7KG+/mEa8dUhWTLhnPXbnyW2UXnTrfxpn22/nT3Xm8m1p6fwMnn6nvF3l938r8XU5QncK6dyfRpqalXl3KHc/oe38kGa3bs5uXZRy53ns4p5beyJr2coj1laxpvJ7fdbl/7m3txAqcw0BcxgTOHwYL79ZzHm5Qf0uh7/LkfzrWVexpnYz57HuN2ZfEvYcp2Lgvjd5Z64o9lM8o5T0s3c39ZIh7SzKe3sI8+vQSHbs9uwvSS2zvBbY+LeCy7gAVLr9RU0NNfejXnFnV9pwPf/pdz2j07VfcqW1bLbNX8NXdTS68+IH9hdf9BBafliyvllfp11S2ez5+prJpN4pdVv3hFvowMa33vVfhshIOEeOrq122UKF8VEfGUw2Ozr72iel1kxJMNj02zRfS66IinGfRb+71XlMQTLKFg33sV5ucEhJR4aiUUMDe0LkyRE0+phALnhM6FWciJJ3Krj9EdJ3FhGQTFE4iNSDmo/8ImUBRfdwlF/O101NMUX2cJRf7NVNRTFV9XCVXwW2mopyu+jhKq6DdSUE9ZfNUlVOFvq189bfFb/NVzdZunLr6qAtra28o8yIuvpIC2tiM5H/ri4xfQ1g4dF8FBfNwCqnmyqK5fzEN8PD21d6/rygAX8XFio3bthnoywUd8+AIiod1QR0YYiQ9cQGS0G6rPCyvxAW2R0q5qyA8z8YFKiJp2Q8VZYic+gDWK2lXV2WIofsMiIqrdUOWfX7AUv0G7SFi7pbL8MRW/ZgFR126oKI9cxa8T9By0GyrJJl/xq3rkol1Vk1XG4lcqIEbaDfFzy1r8vQuImXZVQY6Zi79fAbHTbog8tuMuvqT+5v1FJ9x+Rfp10jOIqZ6j+Itms3moXpq3Co5Pms3d7N1iFw//eKYPNR9eqZvHZuPQfTh2T8cnh7Xmew30lf305s2bv6r/tMnv37z53/8O85P5ib89e+eFUn2j1/ttfmRDo/9ImT27Lq5H5oQv/v43pnLYU391qv9XduY///H//kep12/+bBLfvfkv+18I+InvN+1bYvvaphWpg/6h+e7HkakPvlooUwN0Pfg3c6oTr0YfmU3ib5id4rXz/NqIH//wF/3vT6YmbA4/8RcupMef6Ab9U7t1Yvb4drws/uZU5eLtdv8h7XdKT/GTa9rH/6GySvCdbvgDwFB808l7mSu0VWHk6kNZvMWL93uZhfxPrpE39/jbH20l+P7NX0L8YH7i9X19t9w9v9CuM+FLxI9PHilWFLpz4x+8+CBtPT/xutvWbBZbbNvIZ3aXiM8Ps+E73al3Qe+Nj3+QKt6O4ZqTyLW9uszz7Vk+fpslPushMGL8g1ZvWneILwf9+ONTuycTvzDiGYrPg96Ll9vUWy7MHI7bst21bRZvJ3H+moX6977l3xB+4l85c30f8n3nf9LUb5f4f3c9OzOD43v130nt1ffdgCyblvFxv62du9dunm78w5+zcfzrMFN3DMU7dTePjfKRtWsmcy62czj3B3dD/97M2gifues33USdsTnyHfjDfAInn6u3twL79GZUGPdzm8Bp/8EO423Au7n6QAHPUPyrUztkM5Hbzx68fdBu23n72ztP59rtttvKGnheU7bttr7H3/7oh3PK9u/DxDtH8TNwgT377l16ps3pIQ0WYiwjK6B50TwpQEaPZbH0ahmFEurP67H7c27P2PTssNhyCeXAmL30KjuPz9IrLK9ewioFRPdrgabAH1QsZmWTPNTjT6iWsE750FePP5pcwroFRNw8/kx6CesXEOWgrzJvLMVvVkBU1eONGEvYvIBIqsc7cJYQpIDIqcdbr5awne87qyEzzMRv5RsOa8kIK/GhS4iE+poywUh8jBKqfSK3tt/PRny0EqpTPb6oYBlRS6iu4sdXkywjegnVogBfRrSMKkqocvV1dy4YiN/GLyCrWzsD8VV+/eMW/qa5EBdf9XeMVvLr6g93RV189SUU3z0J7bTF11REWzl0nIKu+BqLaCsni+5AVXzNRRTnt9PRTlZ87UUUoeIRCndFVDyJIgqcCRLXVICgeDJFFDAjZK4ph5x4UkUUKjOUrslDTTy1IgqhnlRdzqAlnmIRbTylQ/CaFC3xFLVbNskY1YuiI55qCVnWDXu6F0VFPN0Sylg9h7Uv6FsEDfGUS2jCarkkfk0kxNMuogKrvIghXi6CQEA88dAocd+80r+m2sXTL6Iy2/JFdzWL56bdMLPPlv66eIL+55z4m5ZqFc9P+2Wr1Xqivv6s7RJP8v17V+f6UGvvSv3rP5iNJ+mzJ/N/DAHqFM9Ouzrfe6HUtdHbVqmtA47rPf1P+rR1ai8qNSfok0mbjyx++N78Y9PeO914OQnBdcu+EfXaeNUNfpqJT/fsmxXP3YeuAXv24xnl96eGEZ80Go0D9dzU8/So0Xgre8Nk8uCqow81Hlyp4b7Z+GWe/LnZOHB7Pd306CBIdmJx2bI37vR37t2pmfisVb8j3lUQqgQR3zGme8an9Z6b7+3of7Tbrk0N7Ak+2XbJ4bsvzP/jDuj9HdLmL10brr6+I97Vhynx6VPCIR9CfK9xbD+MvuTYyrc7Bs5/x1eD4f7OVHJgTnTi7XZ6dBwgQ7HQd/FWobOeic+ET4l/tldt/lYhhPjEhXT6odb3rdkaNJxPF74LxXdVLn74pfK1hyyp67jnKSte+3W77orPd1AkjHhn63lWJLYB1/q7NrVIvMWL93sph7yWbNRnCS8+99zK8DsuW3QH8yHEmx5at7gjsanM8Eri06MdRZpC0GfiW3cCPK8J2y5ex3ajUXRn1eY6VxKfH6bLZSvv1EkX7/ry3mNiR2YFsZ18vLYzI6nuiE/KjQcp/uQ8XvuQn2rq5YkvB/3Abg4ysatFPGXx1254lvXmxHfuHImZw3EM97XcbRTvRKZPrfB85u5S6nDum6796E3u84mWO2nqt0e8Hca7CG+329f+5u4ncNxcvSrcCrZ+AseNwAr+zGh8Czt3+h5/7gZr7badzfHdPPs4Jns6N9m/9VO2PedquJ/Pt3ZMVUi2cjinZjyQT2fey7f/IU3P9uKtPt2915uJlecncPK5+l5xrr54ZxgUpgGIT+Co2YsIZsb29j+W1ff4Tmmw5t3ZJy5zns793j2dU8ofyBp42lO2c9eOXE/H/Dnhnp2K+zx+sPB2PbMEaT+kWbBkqLj0yiJ66dXi8J1ViqQfy/JbKbaAuCtweou76FMl2SHcs9sq7bUuvTKUS5Pu0ivSfw21FlhXfw845HFVahdPv1ip5289CIinXbSU87YJJMQTvocSzdbmEBGvSIYW2eoYADriqanfZuuKlnhK6unkJBK0xJMpcBq5iAk18SSa2PpzEB964lXdBS9BO1HxNRY+gfamGoiKr0e9GOuKsPg6vgqu4t9XK4TFV/4dVFX+stohLb5K9YJaeQtx8dUIaUu6uXvIi4+vXp50AwPxcdXI1M5EfDw9UrWzER9HkVztjMSH1yRZOyvxYVXJ1s5MfMDvAxOunZ34Lf4+sIphJ35zbdBuYCh+O78OrGpYil9bn8Cp2XkwFb+WQ1gvwFa82rKvA6sazuJXkQntd+At/r5CoX0K7uJLC2du3p99hj/l9iviryepEo7iL5rN5qF6aV6zMj5pNt/+INv/8I9n+lDz4ZW6eWw23rfJv82Sh+OTwzrzTQp+4m/P3nmhVN/o9UKb/2gP9B8ps2fXhfXInvDFL94uJm/PYN7DT3y/ad8b2NcirUcd9A8/0635yNQHXy2UqQGmHnxeTuqTKb90sEr4ib9wIT3+RLfgn9qtE7PHN+N3xN9JuvoCFEvxTefuZW7QVoWRqw/LxN88Rshb+InX9/Xdcu/8QsvNDC8TPz55VGFeCcNPvO6nNZvFBts28uMTt2uZ+HyHdBiKt2O45iRwba9uIraZ8Wg6qfIugng4ii8H/fjjU7vnTkTPiXiI9/AUbydx/JD8wvbWIH5F+Il/5cT1fcj3nf+pezjEL4af+L4bj/ne3MjHPTp3K8JQvDN389goH7n5uE+u7JhOYTh3bxiKb7qJOhPhI99jP8wncPK5+mwyf7d8Z8AEjoef+FendoxmArfvve+ettufm3n721lP5/KkaSIwZevhJ34W5oH76D43bzykydgG8X6hxT2CGY9lc7ZAfL4Ep78s5m/P0LPLYC++vXzpVQaWXhXgLh6rKNeEt3isnl0b1uKhfX0Yi0e4bwJb8dC+GVzFQ/uG8BSPcN8YluKhfXMYike4h4CdeGgPAzPx0B4KXuKhPRicxCPcA8JIPLSHhI14hHtYuIiH9sDwEI9wDw4H8dAeAQbioT0G5MUj3ONAXTy0R4K2eIR7NCiLh/aI0BUP7VEhKx7a40JUPMI9NjTFQ3t0KIpHuFcAQfHQXgXkxCPcq4GYeGivijrED9+bd2Sm9k43Wk4EE1F80mg0DtRz836S9KjReCt7XUXy4KqjDzUeXKnhvtn4pU+2f19K+qMH6dFBvEyKJZ74jjHdMwKt99x8b0f/o512bWpgT1icVB2YD0408b3Gsf0w5pJjK9/uGDj/HV8Nhvs7y5Pp0XGsbIolmvjEBW36oRb/rdkaWPFZu72SeFd9QEgiineynmfKhu8amQPfiK8mfriPkA9MNPGmZ9Yt7khsKlO6mvj0aCdWPqUSr3M3cF1zT3pkXaZHftdq4vMdIBQRh3O2L+/FmaGdaQAmJhsZO8uTeY8BBCPqBE4x6Ad2c9C4E8L3jHiID03kmbvEzOE4hvvaJsRTIZr4b7r2oze5zyfa5tRNG+JrIt4EjhuA5b05NxhH544K8cQ7VcP9fLq1Y6pCguEcDSJO2ZrW2Ua47t7rzcS68xM4+Wx8rzw5PzOJCZwIxLzHd0qjM6/OPnCZ/XRudtKcjynb4FT+PH6wxt0aD2nCU/1CjDWiF49lw1PDCpzeqjHfQc8uPLSWXs0ES69iQGyxJagKiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKP8PAWYMduACrvoAAAAASUVORK5CYII=" alt="plot of chunk graph1"/> </p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAABXFBMVEX9/v0AAP4AAP8AOf4AZv4A60gA/wAA/x0A/zMA/zkA/2UA/48A/7UA/9YA/+sA//4A//8dAP8dwm4d1lwd/wAd/x0z/wA5AP45AP85Zv45j/05j/45/wA5/zk5/2U5/485/7U5/9o5//05//45//9Il4BcgIBlAP9lOf5lj/1ltf1l/tpl/v1l/wBl/zll/2Vl/49l/9pl//1l//5l//9ugICAgFyAgICAgJeAgK2Al0iArTOArdaPOf+Ptf2P2/2P/v2P/wCP/zmP//+1Zv+1j/61/tq1/v21/wC1/4+1//61///aj/7aj//a2/3a/tra/v3a/zna/2Xa//7a///9jzn9j2X9tWX9tf7924/92/392/79/mX9/o/9/rX9/tr9/v39/v7+AAD+AGX+OQD+OTn+OY/+ZgD+j4/+tf3+2/3+/tr+/v3/AAD/ADn/AGX/OY//Zo//ZrX/j9obVaZgAAAAdHRSTlP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8A/////////////////////////wPaQdMAAAAJcEhZcwAACxIAAAsSAdLdfvwAAB3FSURBVHic7Z2LextZecbfVYLa3YTaXMp6Q0rXIeAlXdOlBNwLwjJWGi9eLdbisEol2zOUdoGSQuH/f57OucxobpLm/h5J3+95Ys31zKvznu/cZjKCJ+wkYAsQOIAtQOAAtgCBA9gCBA5gCxA4gC1A4AC2AIED2AIEDmALEDiALUDgALYAgQPYAgQOYAsQOIAtQOAAtgCBA9gCBA5gCxA4gC1A4AC2AIED2AIEDmALEDiALUDgALYAgQPYAgQOYAsQOIAtQOAAtgCBA9gCBA5gCxA4gC1A4AC2AIED2AIEDmALEDiALUDgALYAgQPYAgQOYAsQOIAtQOAAtgCBA9gCBA5gCxA4gC1A4AC2AIED2AIEDmALEDiALUDgALYAgQPYAgQOYAsQOIAtQOAAtgCBA9gCBA5gCxA4gC1A4AC2AIED2AIEDmALEDiALUDgALYAgQPYAgQOYAsQOIAtQOAAtgCB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" alt="plot of chunk graph1"/> </p>
 
 <p>我们把\( S_0,S_1,S_2,S_3 \)的自变量记为\( \omega_1\omega_2\omega_3 \),尽管有些随机变量并不依赖所有硬币抛掷过程。</p>
 
@@ -298,13 +298,15 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 
 <p>\( \tilde{E}X=\sum_{\omega}X(\omega) \tilde{P}(\omega) \)</p>
 
+<p>X的<strong>方差</strong>定义为：</p>
+
+<p>\( Var(X)=E(X-EX)^2 \)</p>
+
 <blockquote>
 <p>期望满足线性性</p>
 </blockquote>
 
-<p>X的<strong>方差</strong>定义为：</p>
-
-<p>\( Var(X)=E(X-EX)^2 \)</p>
+<h4>如果l(x)=ax+b是一个哑变量x的线性函数，则E[l(X)]=l(EX)。</h4>
 
 <h3>定理2.2.5[詹森（Jensen）不等式]：</h3>
 
@@ -314,7 +316,8 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 
 <pre><code class="r">x = seq(from = 0, to = 10, length = 100)
 y = x^2
-plot(x, y, type = &quot;l&quot;, col = &quot;blue&quot;, main = &quot;凸函攼&lt;U+3E36&gt;&lt;U+393C&gt;&lt;U+3E35&gt;abline(a = -25, b = 10, col = &quot;red&quot;)
+plot(x, y, type = &quot;l&quot;, col = &quot;blue&quot;, main = &quot;凸函攼&lt;U+3E36&gt;&lt;U+393C&gt;&lt;U+3E35&gt;
+abline(a = -25, b = 10, col = &quot;red&quot;)
 abline(a = -35, b = 10, col = &quot;green&quot;)
 abline(a = -18, b = 10, col = &quot;green&quot;)
 points(5, 25, pch = 19, col = &quot;red&quot;, cex = 2)
@@ -353,11 +356,11 @@ points(5, 25, pch = 19, col = &quot;red&quot;, cex = 2)
 
 <h3>定义2.3.1</h3>
 
-<p>设n满足\( 1\le n\le N \),对于给定的（前n次跑掷硬币的结果）序列\( \omega_1\cdot\cdot\cdot\omega_n \),存在\( 2^{N-n} \)种可能的后续\( \omega_{n+1}\cdot\cdot\cdot\omega_N \)。用\( \sharp H(\omega_{n+1}\cdot\cdot\cdot\omega_N) \)表示后续\( \omega_{n+1}\cdot\cdot\cdot\omega_N \)中出现正面的次数，\( \sharp T(\omega_{n+1}\cdot\cdot\cdot\omega_N) \)为出现背面的次数，我们定义：</p>
+<p>设n满足\( 1\le n\le N \),对于给定的（前n次抛掷硬币的结果）序列\( \omega_1\cdot\cdot\cdot\omega_n \),存在\( 2^{N-n} \)种可能的后续\( \omega_{n+1}\cdot\cdot\cdot\omega_N \)。用\( \sharp H(\omega_{n+1}\cdot\cdot\cdot\omega_N) \)表示后续\( \omega_{n+1}\cdot\cdot\cdot\omega_N \)中出现正面的次数，\( \sharp T(\omega_{n+1}\cdot\cdot\cdot\omega_N) \)为出现背面的次数，我们定义：</p>
 
 <p>\( \tilde{E_n}(\omega_1\cdot\cdot\cdot\omega_n)=\sum_{\omega_{n+1}\cdot\cdot\cdot\omega_N}\tilde{p}^\sharp H(\omega_{n+1}\cdot\cdot\cdot\omega_N){q}^\sharp T(\omega_{n+1}\cdot\cdot\cdot\omega_N)X(\omega_1\cdot\cdot\cdot\omega_n) \)  …………………… <strong>(2.3.6)</strong></p>
 
-<p>并称\( \tilde{E_n} \)为基于时刻n信息的X的条件期望。<br/>
+<p>并称<strong>\( \tilde{E_n}[X] \)为基于时刻n信息的X的条件期望</strong>。<br/>
 或者写成：</p>
 
 <p>\( \tilde{E_n}(\omega_1\cdot\cdot\cdot\omega_n)=\sum_{\omega_{n+1}\cdot\cdot\cdot\omega_N}\tilde{p}^k{(1-\tilde{p})^(N-n-k)}X(\omega_1\cdot\cdot\cdot\omega_n) \)  …………………… <strong>(2.3.6.2)</strong></p>
@@ -412,7 +415,7 @@ points(5, 25, pch = 19, col = &quot;red&quot;, cex = 2)
 
 <p>如果我们将（2.3.5）两边除以\( (1+r)^n \)，得：</p>
 
-<p>\( \cfrac{S_n}{(1+r)^n}=\tilde{E_n}[\cfrac{S_{n+1}}{(1+r)^{n+1}}] \)…………………… <strong>(2.4.1)</strong></p>
+<p>\( \cfrac{S_n}{(1+r)^n} =\tilde{E_n}[\cfrac{S_{n+1}}{(1+r)^{n+1}}] \)…………………… <strong>(2.4.1)</strong></p>
 
 <p>上式方程表明：在风险中性测度下，对不支付红利的股票，基于时刻n的信息对时刻n+1的股票价格贴现值的最好估计就是时刻n的股票价格贴现值。<br/>
 满足这一条件的过程被称为<strong>鞅</strong>。</p>
@@ -420,7 +423,7 @@ points(5, 25, pch = 19, col = &quot;red&quot;, cex = 2)
 <h3>定义2.4.1</h3>
 
 <p>考虑二叉树资产定价模型。<br/>
-设\( M_0,M_1,\cdot\cdot\cdot,M_N \)为随机变量序列，每个\( M_n \)只依赖前n次抛掷硬币（\( M_0 \)为常量）。这样的随机变量序列称为适应随机过程。</p>
+设\( M_0,M_1,\cdot\cdot\cdot,M_N \)为随机变量序列，每个\( M_n \)只依赖前n次抛掷硬币（\( M_0 \)为常量）。这样的随机变量序列称为<strong>适应随机过程</strong>。</p>
 
 <p>(1) 如果<br/>
 \( M_n=E_n[M_{n+1}],n=0,1,\cdot\cdot\cdot,N-1 \)…………………… <strong>(2.4.2)</strong><br/>
@@ -443,20 +446,35 @@ points(5, 25, pch = 19, col = &quot;red&quot;, cex = 2)
 \( \tilde{q}=\cfrac{u-1-r}{u-d} \)<br/>
 那么在风险中性测度下，贴现股票价格过程是一个鞅，即式（2.4.1）在每个时刻n对任意的抛掷硬币结果序列都成立。</p>
 
+<blockquote>
+<p>真实概率下的平均增长率取决于投资者财富的平均增长率；<br/>
+投资者财富在风险中性概率下的平均增站了，与投资者持有的组合过程无关，此时，股票的平均增长率等于利率<br/>
+尽管在风险中性测度下，某些组合过程风险要更大些，但是它们的平均增长率还是一样的。</p>
+</blockquote>
+
 <h3>定理2.4.5</h3>
 
 <p>考虑N时段的二叉树模型。设\( \vartriangle_0,\vartriangle_1,\cdot\cdot\cdot,\vartriangle_{N-1} \)为适应组合过程，\( X_0 \)为实数，\( X_0,X_1,\cdot\cdot\cdot,X_N \)为由财富方程</p>
 
 <p>\( X_{n+1}=\vartriangle_nS_{n+1}+(1+r)(X_n-\vartriangle_nS_n),n=0,1,\cdot\cdot\cdot,N-1 \)<br/>
-递归产生的财富过程，那么，贴现财富过\( \frac{X_n}{(1+r)^n},n=0,1,\cdot\cdot\cdot,N \)为风险中性测度下的鞅，即：</p>
+递归产生的财富过程，那么，贴现财富过程\( \frac{X_n}{(1+r)^n},n=0,1,\cdot\cdot\cdot,N \)为风险中性测度下的鞅，即：</p>
 
 <p>\( \cfrac{X_n}{(1+r)^n}=\tilde{E_n}\cfrac{X_n}{(1+r)^n},n=0,1,\cdot\cdot\cdot,N-1 \)…………………… <strong>(2.4.7)</strong></p>
+
+<blockquote>
+<p>贴现财富过程为风险中性测度下的鞅</p>
 
 <h4>推论2.4.6.</h4>
 
 <p>在定理2.4.5的条件下，我们有：</p>
+</blockquote>
 
 <p>\( \tilde{E}\cfrac{X_n}{(1+r)^n}=X_0,n=0,1,\cdot\cdot\cdot,N \)…………………… <strong>(2.4.8)</strong></p>
+
+<blockquote>
+<p>鞅的期望值不会随着时间改变<br/>
+在二叉树模型中不存在套利</p>
+</blockquote>
 
 <h3>资产定价第一基本定理：</h3>
 
@@ -483,6 +501,10 @@ points(5, 25, pch = 19, col = &quot;red&quot;, cex = 2)
 <p>\( \cfrac{V_n}{(1+r)^n}=\tilde{E_n}\cfrac{V_{n+1}}{(1+r)^{n+1}} \)…………………… <strong>(2.4.12)</strong></p>
 
 <p>由式（2.4.11）定义的随机变量\( V_n \)与定理1.2.2中定义的随机变量\( V_n \)是一致的。</p>
+
+<blockquote>
+<p>衍生证券的贴现价格是一个鞅</p>
+</blockquote>
 
 <p>到目前为止，我们只讨论了在某个单独日期支付的衍生证券。而许多衍生证券，如附息债券和利率互换等，会有一系列的支付。对于这样的证券，我们有以下的定价和对冲公式。</p>
 

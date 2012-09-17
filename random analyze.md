@@ -11,7 +11,7 @@ $\mathrm{\Omega= \left\{HHH,HHT,HTH,HTT,THH,THT,TTH,TTT \right\}}$     ¡­¡­¡­¡­¡
 
 ÉèÃ¿´ÎÅ×ÖÀ³öÏÖÕýÃæµÄ¸ÅÂÊÎª**p**,³öÏÖ±³ÃæµÄ¸ÅÂÊÎª__q=1-p__,¼ÙÉèÍ¶ÖÀ¹ý³ÌÊÇ**Ïà»¥¶ÀÁ¢**µÄ¡£
 
-ÓÉ´Ë$\Omega$ ÖÐÃ¿¸öÔªËØ$\omega$ (Èý´ÎÅ×ÖÀµÄ½á¹ûÐòÁÐ)µÄ¸ÅÂÊ¶¼ÊÇ¿ÉÒÔ³öÀ´£»
+ÓÉ´ËÑù±¾¿Õ¼ä$\Omega$ ÖÐÃ¿¸öÔªËØ$\omega$ (Èý´ÎÅ×ÖÀµÄ½á¹ûÐòÁÐ)µÄ¸ÅÂÊ¶¼ÊÇ¿ÉÒÔ³öÀ´£»
 
 ### ÎÒÃÇ³Æ$\Omega$ÖÐµÄ×Ó¼¯Îª__ÊÂ¼þ__
 
@@ -25,7 +25,7 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
-## [1] "HHT"
+## [1] "TTT"
 ```
 
 ```r
@@ -34,7 +34,16 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
-## [1] "TTH"
+## [1] "HTH"
+```
+
+```r
+paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = "")
+```
+
+```
+## [1] "HHT"
 ```
 
 ```r
@@ -52,7 +61,16 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 ```
 
 ```
-## [1] "HHT"
+## [1] "HHH"
+```
+
+```r
+paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = "")
+```
+
+```
+## [1] "TTT"
 ```
 
 ```r
@@ -62,24 +80,6 @@ paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin,
 
 ```
 ## [1] "THT"
-```
-
-```r
-paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = "")
-```
-
-```
-## [1] "THH"
-```
-
-```r
-paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
-    1, replace = T), sep = "")
-```
-
-```
-## [1] "TTH"
 ```
 
 
@@ -96,14 +96,14 @@ $P(A)=\sum_{\omega} P(\omega)$ ¡­¡­¡­¡­¡­¡­¡­¡­ **(2.1.5)**
 
 ÆäÖÐ
 
-$P(\omega)=1$ ¡­¡­¡­¡­¡­¡­¡­¡­ **(2.1.6)**
+$P(\Omega)=1$ ¡­¡­¡­¡­¡­¡­¡­¡­ **(2.1.6)**
 
 
 2.2 Ëæ»ú±äÁ¿¡¢·Ö²¼ºÍÆÚÍû
 -------------------------
 
 ### ¶¨Òå2.2.1£º
-Éè$£¨\omega£¬P£©$ÎªÓÐÏÞ¸ÅÂÊ¿Õ¼ä£¬__Ëæ»ú±äÁ¿__Îª¶¨ÒåÎª$\omega$ÉÏµÄÒ»¸öÊµÖµº¯Êý
+Éè$£¨\Omega£¬P£©$ÎªÓÐÏÞ¸ÅÂÊ¿Õ¼ä£¬__Ëæ»ú±äÁ¿__Îª¶¨ÒåÎª$\omega$ÉÏµÄÒ»¸öÊµÖµº¯Êý
 
 
 #### ÏÂÍ¼Îª1.2.2
@@ -129,12 +129,14 @@ $EX=\sum_{\omega}X(\omega) P(\omega)$
 
 $\tilde{E}X=\sum_{\omega}X(\omega) \tilde{P}(\omega)$
 
-> ÆÚÍûÂú×ãÏßÐÔÐÔ
 
 
 XµÄ__·½²î__¶¨ÒåÎª£º
 
 $Var(X)=E(X-EX)^2$
+> ÆÚÍûÂú×ãÏßÐÔÐÔ
+
+#### Èç¹ûl(x)=ax+bÊÇÒ»¸öÑÆ±äÁ¿xµÄÏßÐÔº¯Êý£¬ÔòE[l(X)]=l(EX)¡£
 
 ### ¶¨Àí2.2.5[Õ²É­£¨Jensen£©²»µÈÊ½]£º
 ÉèXÎª¶¨ÒåÔÚÓÐÏÞ¸ÅÂÊ¿Õ¼äÉÏµÄËæ»ú±äÁ¿£¬$\varphi(x)$ÎªÑÆ±äÁ¿ x µÄÍ¹º¯Êý£¨convex£©£¬ÔòÓÐ£º
@@ -145,7 +147,8 @@ $\varphi(EX) \le E[\varphi(X)]$
 ```r
 x = seq(from = 0, to = 10, length = 100)
 y = x^2
-plot(x, y, type = "l", col = "blue", main = "Í¹º¯”<U+3E36><U+393C><U+3E35>abline(a = -25, b = 10, col = "red")
+plot(x, y, type = "l", col = "blue", main = "Í¹º¯”<U+3E36><U+393C><U+3E35>
+abline(a = -25, b = 10, col = "red")
 abline(a = -35, b = 10, col = "green")
 abline(a = -18, b = 10, col = "green")
 points(5, 25, pch = 19, col = "red", cex = 2)
@@ -186,12 +189,12 @@ $S_n=\cfrac{1}{1+r} \tilde{E_n}[S_{n+1}]$¡­¡­¡­¡­¡­¡­¡­¡­ **(2.3.5)**
 
 
 ### ¶¨Òå2.3.1
-ÉènÂú×ã$1\le n\le N$,¶ÔÓÚ¸ø¶¨µÄ£¨Ç°n´ÎÅÜÖÀÓ²±ÒµÄ½á¹û£©ÐòÁÐ$\omega_1\cdot\cdot\cdot\omega_n$,´æÔÚ$2^{N-n}$ÖÖ¿ÉÄÜµÄºóÐø$\omega_{n+1}\cdot\cdot\cdot\omega_N$¡£ÓÃ$\sharp H(\omega_{n+1}\cdot\cdot\cdot\omega_N)$±íÊ¾ºóÐø$\omega_{n+1}\cdot\cdot\cdot\omega_N$ÖÐ³öÏÖÕýÃæµÄ´ÎÊý£¬$\sharp T(\omega_{n+1}\cdot\cdot\cdot\omega_N)$Îª³öÏÖ±³ÃæµÄ´ÎÊý£¬ÎÒÃÇ¶¨Òå£º
+ÉènÂú×ã$1\le n\le N$,¶ÔÓÚ¸ø¶¨µÄ£¨Ç°n´ÎÅ×ÖÀÓ²±ÒµÄ½á¹û£©ÐòÁÐ$\omega_1\cdot\cdot\cdot\omega_n$,´æÔÚ$2^{N-n}$ÖÖ¿ÉÄÜµÄºóÐø$\omega_{n+1}\cdot\cdot\cdot\omega_N$¡£ÓÃ$\sharp H(\omega_{n+1}\cdot\cdot\cdot\omega_N)$±íÊ¾ºóÐø$\omega_{n+1}\cdot\cdot\cdot\omega_N$ÖÐ³öÏÖÕýÃæµÄ´ÎÊý£¬$\sharp T(\omega_{n+1}\cdot\cdot\cdot\omega_N)$Îª³öÏÖ±³ÃæµÄ´ÎÊý£¬ÎÒÃÇ¶¨Òå£º
 
 
 $\tilde{E_n}(\omega_1\cdot\cdot\cdot\omega_n)=\sum_{\omega_{n+1}\cdot\cdot\cdot\omega_N}\tilde{p}^\sharp H(\omega_{n+1}\cdot\cdot\cdot\omega_N){q}^\sharp T(\omega_{n+1}\cdot\cdot\cdot\omega_N)X(\omega_1\cdot\cdot\cdot\omega_n)$  ¡­¡­¡­¡­¡­¡­¡­¡­ **(2.3.6)**
 
-²¢³Æ$\tilde{E_n}$Îª»ùÓÚÊ±¿ÌnÐÅÏ¢µÄXµÄÌõ¼þÆÚÍû¡£
+²¢³Æ**$\tilde{E_n}[X]$Îª»ùÓÚÊ±¿ÌnÐÅÏ¢µÄXµÄÌõ¼þÆÚÍû**¡£
 »òÕßÐ´³É£º
 
 $\tilde{E_n}(\omega_1\cdot\cdot\cdot\omega_n)=\sum_{\omega_{n+1}\cdot\cdot\cdot\omega_N}\tilde{p}^k{(1-\tilde{p})^(N-n-k)}X(\omega_1\cdot\cdot\cdot\omega_n)$  ¡­¡­¡­¡­¡­¡­¡­¡­ **(2.3.6.2)**
@@ -245,14 +248,14 @@ $\varphi(E_n[X]) \le E_n[\varphi(X)]$
 
 Èç¹ûÎÒÃÇ½«£¨2.3.5£©Á½±ß³ýÒÔ$(1+r)^n$£¬µÃ£º
 
-$\cfrac{S_n}{(1+r)^n}=\tilde{E_n}[\cfrac{S_{n+1}}{(1+r)^{n+1}}]$¡­¡­¡­¡­¡­¡­¡­¡­ **(2.4.1)**
+$\cfrac{S_n}{(1+r)^n} =\tilde{E_n}[\cfrac{S_{n+1}}{(1+r)^{n+1}}]$¡­¡­¡­¡­¡­¡­¡­¡­ **(2.4.1)**
 
 ÉÏÊ½·½³Ì±íÃ÷£ºÔÚ·çÏÕÖÐÐÔ²â¶ÈÏÂ£¬¶Ô²»Ö§¸¶ºìÀûµÄ¹ÉÆ±£¬»ùÓÚÊ±¿ÌnµÄÐÅÏ¢¶ÔÊ±¿Ìn+1µÄ¹ÉÆ±¼Û¸ñÌùÏÖÖµµÄ×îºÃ¹À¼Æ¾ÍÊÇÊ±¿ÌnµÄ¹ÉÆ±¼Û¸ñÌùÏÖÖµ¡£
 Âú×ãÕâÒ»Ìõ¼þµÄ¹ý³Ì±»³ÆÎª__÷±__¡£
 
 ### ¶¨Òå2.4.1 
 ¿¼ÂÇ¶þ²æÊ÷×Ê²ú¶¨¼ÛÄ£ÐÍ¡£
-Éè$M_0,M_1,\cdot\cdot\cdot,M_N$ÎªËæ»ú±äÁ¿ÐòÁÐ£¬Ã¿¸ö$M_n$Ö»ÒÀÀµÇ°n´ÎÅ×ÖÀÓ²±Ò£¨$M_0$Îª³£Á¿£©¡£ÕâÑùµÄËæ»ú±äÁ¿ÐòÁÐ³ÆÎªÊÊÓ¦Ëæ»ú¹ý³Ì¡£
+Éè$M_0,M_1,\cdot\cdot\cdot,M_N$ÎªËæ»ú±äÁ¿ÐòÁÐ£¬Ã¿¸ö$M_n$Ö»ÒÀÀµÇ°n´ÎÅ×ÖÀÓ²±Ò£¨$M_0$Îª³£Á¿£©¡£ÕâÑùµÄËæ»ú±äÁ¿ÐòÁÐ³ÆÎª**ÊÊÓ¦Ëæ»ú¹ý³Ì**¡£
 
 (1) Èç¹û
 $M_n=E_n[M_{n+1}],n=0,1,\cdot\cdot\cdot,N-1$¡­¡­¡­¡­¡­¡­¡­¡­ **(2.4.2)**
@@ -274,20 +277,27 @@ $\tilde{p}=\cfrac{1+r-d}{u-d}$,
 $\tilde{q}=\cfrac{u-1-r}{u-d}$
 ÄÇÃ´ÔÚ·çÏÕÖÐÐÔ²â¶ÈÏÂ£¬ÌùÏÖ¹ÉÆ±¼Û¸ñ¹ý³ÌÊÇÒ»¸ö÷±£¬¼´Ê½£¨2.4.1£©ÔÚÃ¿¸öÊ±¿Ìn¶ÔÈÎÒâµÄÅ×ÖÀÓ²±Ò½á¹ûÐòÁÐ¶¼³ÉÁ¢¡£
 
+> ÕæÊµ¸ÅÂÊÏÂµÄÆ½¾ùÔö³¤ÂÊÈ¡¾öÓÚÍ¶×ÊÕß²Æ¸»µÄÆ½¾ùÔö³¤ÂÊ£»
+> Í¶×ÊÕß²Æ¸»ÔÚ·çÏÕÖÐÐÔ¸ÅÂÊÏÂµÄÆ½¾ùÔöÕ¾ÁË£¬ÓëÍ¶×ÊÕß³ÖÓÐµÄ×éºÏ¹ý³ÌÎÞ¹Ø£¬´ËÊ±£¬¹ÉÆ±µÄÆ½¾ùÔö³¤ÂÊµÈÓÚÀûÂÊ
+> ¾¡¹ÜÔÚ·çÏÕÖÐÐÔ²â¶ÈÏÂ£¬Ä³Ð©×éºÏ¹ý³Ì·çÏÕÒª¸ü´óÐ©£¬µ«ÊÇËüÃÇµÄÆ½¾ùÔö³¤ÂÊ»¹ÊÇÒ»ÑùµÄ¡£
+
 ### ¶¨Àí2.4.5 
 ¿¼ÂÇNÊ±¶ÎµÄ¶þ²æÊ÷Ä£ÐÍ¡£Éè$\vartriangle_0,\vartriangle_1,\cdot\cdot\cdot,\vartriangle_{N-1}$ÎªÊÊÓ¦×éºÏ¹ý³Ì£¬$X_0$ÎªÊµÊý£¬$X_0,X_1,\cdot\cdot\cdot,X_N$ÎªÓÉ²Æ¸»·½³Ì
 
 $X_{n+1}=\vartriangle_nS_{n+1}+(1+r)(X_n-\vartriangle_nS_n),n=0,1,\cdot\cdot\cdot,N-1$
-µÝ¹é²úÉúµÄ²Æ¸»¹ý³Ì£¬ÄÇÃ´£¬ÌùÏÖ²Æ¸»¹ý$\frac{X_n}{(1+r)^n},n=0,1,\cdot\cdot\cdot,N$Îª·çÏÕÖÐÐÔ²â¶ÈÏÂµÄ÷±£¬¼´£º
+µÝ¹é²úÉúµÄ²Æ¸»¹ý³Ì£¬ÄÇÃ´£¬ÌùÏÖ²Æ¸»¹ý³Ì$\frac{X_n}{(1+r)^n},n=0,1,\cdot\cdot\cdot,N$Îª·çÏÕÖÐÐÔ²â¶ÈÏÂµÄ÷±£¬¼´£º
 
 $\cfrac{X_n}{(1+r)^n}=\tilde{E_n}\cfrac{X_n}{(1+r)^n},n=0,1,\cdot\cdot\cdot,N-1$¡­¡­¡­¡­¡­¡­¡­¡­ **(2.4.7)**
 
 
+> ÌùÏÖ²Æ¸»¹ý³ÌÎª·çÏÕÖÐÐÔ²â¶ÈÏÂµÄ÷±
 #### ÍÆÂÛ2.4.6.
 ÔÚ¶¨Àí2.4.5µÄÌõ¼þÏÂ£¬ÎÒÃÇÓÐ£º
 
 $\tilde{E}\cfrac{X_n}{(1+r)^n}=X_0,n=0,1,\cdot\cdot\cdot,N$¡­¡­¡­¡­¡­¡­¡­¡­ **(2.4.8)**
 
+> ÷±µÄÆÚÍûÖµ²»»áËæ×ÅÊ±¼ä¸Ä±ä
+> ÔÚ¶þ²æÊ÷Ä£ÐÍÖÐ²»´æÔÚÌ×Àû
 
 ### ×Ê²ú¶¨¼ÛµÚÒ»»ù±¾¶¨Àí£º
 Ò»°ãµØ£¬Èç¹ûÒ»¸öÄ£ÐÍÖÐ´æÔÚÒ»¸ö·çÏÕÖÐÐÔ²â¶È£¬ÄÇÃ´Õâ¸öÄ£ÐÍÖÐ¾Í²»´æÔÚÌ×Àû¡£
@@ -315,6 +325,8 @@ $V_n=\tilde{E_n}[\cfrac{V_N}{(1+r)^{N-n}}]$¡­¡­¡­¡­¡­¡­¡­¡­ **(2.4.11)**
 $\cfrac{V_n}{(1+r)^n}=\tilde{E_n}\cfrac{V_{n+1}}{(1+r)^{n+1}}$¡­¡­¡­¡­¡­¡­¡­¡­ **(2.4.12)**
 
 ÓÉÊ½£¨2.4.11£©¶¨ÒåµÄËæ»ú±äÁ¿$V_n$Óë¶¨Àí1.2.2ÖÐ¶¨ÒåµÄËæ»ú±äÁ¿$V_n$ÊÇÒ»ÖÂµÄ¡£
+
+> ÑÜÉúÖ¤È¯µÄÌùÏÖ¼Û¸ñÊÇÒ»¸ö÷±
 
 µ½Ä¿Ç°ÎªÖ¹£¬ÎÒÃÇÖ»ÌÖÂÛÁËÔÚÄ³¸öµ¥¶ÀÈÕÆÚÖ§¸¶µÄÑÜÉúÖ¤È¯¡£¶øÐí¶àÑÜÉúÖ¤È¯£¬Èç¸½Ï¢Õ®È¯ºÍÀûÂÊ»¥»»µÈ£¬»áÓÐÒ»ÏµÁÐµÄÖ§¸¶¡£¶ÔÓÚÕâÑùµÄÖ¤È¯£¬ÎÒÃÇÓÐÒÔÏÂµÄ¶¨¼ÛºÍ¶Ô³å¹«Ê½¡£
 
