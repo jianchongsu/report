@@ -1,0 +1,526 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>第二章 抛掷硬币空间上的概率论</title>
+
+<base target="_blank"/>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+<!-- MathJax scripts -->
+<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+</head>
+
+<body>
+<h1>第二章 抛掷硬币空间上的概率论</h1>
+
+<h2>2.1 有限概率空间</h2>
+
+<p>有限概率空间被用于随机试验的所有可能结果有限的建模中。上章中有限次抛掷硬币。如果抛掷三次，所有可能结果的集合为：</p>
+
+<p>\( \mathrm{\Omega= \left\{HHH,HHT,HTH,HTT,THH,THT,TTH,TTT \right\}} \)     …………………… <strong>(2.1.1)</strong></p>
+
+<p>设每次抛掷出现正面的概率为<strong>p</strong>,出现背面的概率为<strong>q=1-p</strong>,假设投掷过程是<strong>相互独立</strong>的。</p>
+
+<p>由此\( \Omega \) 中每个元素\( \omega \) (三次抛掷的结果序列)的概率都是可以出来；</p>
+
+<h3>我们称\( \Omega \)中的子集为<strong>事件</strong></h3>
+
+<p>事件也经常用文字或符号来描述。<br/>
+R中模拟投三次硬币：</p>
+
+<pre><code class="r">coin = c(&quot;T&quot;, &quot;H&quot;)
+paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;HTH&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;HTH&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;THT&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;HHT&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;HTH&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;TTT&quot;
+</code></pre>
+
+<pre><code class="r">paste(sample(coin, 1, replace = T), sample(coin, 1, replace = T), sample(coin, 
+    1, replace = T), sep = &quot;&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;TTH&quot;
+</code></pre>
+
+<h3>定义2.1.1  有限概率空间包含样本空间\( \Omega \) 和概率测度<strong>P</strong>：</h3>
+
+<p>样本空间是一个非空有限集合，概率测度<strong>P</strong>为一个函数，该函数将\( \Omega \)中每个元素对应到 [ 0, 1 ]之间的某个数，使得：</p>
+
+<p>\( \sum_{\omega} P(\omega)=1 \) …………………… <strong>(2.1.4)</strong></p>
+
+<p>一个事件是\( \Omega \)中的一个子集，我们按如下方式定义事件<strong>A</strong>的概率：</p>
+
+<p>\( P(A)=\sum_{\omega} P(\omega) \) …………………… <strong>(2.1.5)</strong></p>
+
+<p>其中</p>
+
+<p>\( P(\omega)=1 \) …………………… <strong>(2.1.6)</strong></p>
+
+<h2>2.2 随机变量、分布和期望</h2>
+
+<h3>定义2.2.1：</h3>
+
+<p>设\( （\omega，P） \)为有限概率空间，<strong>随机变量</strong>为定义为\( \omega \)上的一个实值函数</p>
+
+<h4>下图为1.2.2</h4>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAABPlBMVEX9/v0AAP4AAP8AHcIAOf4AZv4A60gA/wAA/x0A/zkA/2UA/48A/7UA//4A//8dAP8dwm4d/wAd/zMd//8zrYA5AP45AP85Zv45j/05j/45/wA5/zk5/2U5/7U5/9o5//05//45//9Il4BI6x1cgIBcwsJlAP9lOf5ltf1l/v1l/wBl/zll/49l/9pl//5l//9ugICAbsKAgG6AgICAgJeAl0iAl8KArTOPOf+Ptf2P2/2P/v2P/wCP/zmP//+XSB21Zv+1j/61/v21/wC1/4+1//61///aj/7aj//a2/3a/tra/v3a/zna/2Xa//7a///9jzn9j2X9tWX9tf7924/92/79/mX9/o/9/rX9/tr9/v39/v7+AAD+OQD+OY/+ZgD+j4/+tf3+2/3+/v3/AAD/ADn/AGX/OY//ZrX/j9pcsq7WAAAAanRSTlP///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8A////////////////////nJcKuQAAAAlwSFlzAAALEgAACxIB0t1+/AAAF5VJREFUeJztnQt748Z1hmN2VVreFdO0taxsam3WTWRZtrOOWbc0JSvY1VqmI260NU2KGth1L9sm+f9/oHMDCIg3kZwBzuH53ufxEgPA0mDeOYOZwQj8mQIi+VndGQD1APFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihVCp++N79z+10o2UDqDjik0ajcaCeX+nN9KjReOtFtv/B1XC/MaG7KJUeHUTIGsiIIL5jTPcaD66c99x8b0fH/LsvzF5zbLjfXZTSPwfmIxJefK9xbD+MwOTYyrc7Bsb/wGw6uXp7UcpsHgfPHMgILz5pdM1H+qEW+K3ZGjScURPAg67K5Q6/XJRSvu6AOMQQ73w9z6zZJlzr72ZneLlLU8N9hHw0wos3fbRucUdiU528j3dv8enRTvDcAU+Ezt1A9+eK9qzxstD7iS9WFhCYGMM525f3wZrYsZlpB3YKx+8pPik3HSAgcSZwikE/sJuDBsSTItbMXWLmcBzDfd1iQzwxwov/pms/epP7fKLFo6knRoQJHDcGKxg043F07ogRQbyzNdzPZ1w7piokGM6RIsaUrWmgrUDdvdebidVXmMAZlAb681OYwIlIlHt8JxvOmY2Gt5c9c3EP4bL4X5TClG1EqnseP1hww27P2omHNDGpcCHGogBuz1CPx7IxqXIFTm9RJ31KfQc9u5gQWnpVVo+lV3EhtdhyVoMP4kBK/JxeHogAMfEI+qqgJh7qK4KeeKivBIriob4CaIqH+uhQFY8OfmToikfQR4WweKiPCWnxUB8P4uJxq48FefEwHwf64tHcR4GBeKiPAQvxUB8eJuKhPjRsxKOXFxZG4hH0IeEkHuoDwks82vtgcBOPoA8EO/FQHwaG4qE+BCzFQ/3mMBUP9ZvCVjzUbwZj8VC/CazFY1i/PszFF4L+5v0Fp91+dVpBZjjBTvxFs9k8VC/NOxbGJ83m7qk3f/Hw6uZxM2f3tJwanxzWmm1yMBN/e/bOC6X6zYdavDf7kQ36/iO9459emNpgj/3qtJzS/yfMF2Emvt/8yH5ondakDnq92VYjUx9G5phTrbfLKbP5UZ05pwYz8Re79l49/uRK3Xxqt07MHteQ35yqXPXNaTmlXG0BGdzEN529l7lDWxVGu3nfzauekbp5jJCfwEy8vq/vlvvnF7qRd3d+x3zx45NHFeSQC8zEq5HuzpXNHt7VO098sXoAbuLtGK45CV3bq7t5/KhwfJ74rIMADOzEl4N+/PGp3QPxq8JQvJ3E8YPyC9tfg/jVYSb+lVPX9yHfd/7R1K8OM/F9NyLL5mV83KNztzrcxDt3N4+N8pGNczOZc4Hh3KpwE990E3VG58g/gfm7drswgTOaDPTbpRQmcEowE//q9PbMD+f63vvbp2ryBMY9uMni/4tfFFOYsi3CTPwU/nn8aM7tu7BGBw9pSvAWP/E6N5yzU/BYtgxn8aUld/25Xfa2Oe/2DD27EnzF311puWjpVfvzf8YQvgxX8SsvsMWyzDI8xa+zrhprsUtwFL+uQqgvwE/8JvqgPoeb+E3VQb2Hl/gQ2qDewkl8KGVtuOckPqgtqOciPrgp6WHPRHwUSaLVsxAfzZBg9QzER7UjtsUnLz6+GJnqaYuvKB4lqictvjof8tRTFl+pDGnq6Yqv3ISsfh5R8TVJEKSepPgay1+MeoLiay57IerJiSdQ7gSyEB9i4omUOZFsxISWeDrlvfXqKYmnVdi0chMcOuLpFTS9HAWEiniahUwzV0EgIZ7wnBnhrG0GAfHUi5Z6/tajdvEcinUbw75m8WxKlE1G70u94jmV5papr1M8t6Lklt+FRBY/fG/uoeli7HRjZiUEW6Q+jPik0WgcqOfmNTTpUaPxVvZWkuTBVUcfajy4UsN9s3HgPjzdcio9OgiSm5jMVp/+upw+p//+jSDiO8Z0z+i13nPzvR39j5bbtamB9f/uC3PS31yZA12feuBS+gfRNn/ZarWetH/7mU88yffvXaVPWxNO02dP5v4QIoQQ32sc2w/jLzm28u2OgfPf8dVguK/rwcAccar1djllNo8D5CcW53v6Qq5be1c67FNTB/z+6z0T86YKP9szdf+pjvdz6uZDiE9cSKcf6qv+1mwNGk6oi9+y+K7KVQ+/LKeUrzxEuW7ZF+VdG7l6ZJ9m4lNTH1JzzIm32+kz4m/VCyPe6XqeSbMtuNbftamSeItXPSM13Kcb8pcte+dOf+dym4l3zXp6qibizbatH4QJId500brFHYlNZcJXEZ8e7SiqXLacy6/viG/lPTkv3m0/pR3yQTp3A9dx96RH1nTucxXx+ckEMf23Qm89E2/v/H5XUfyzvQrztjphhnO2L++1JnZoVvDcyQds9xCflNsOUpgOXcGsE39H9uRKChWCIqEmcIpBP7Cbg8zzShFPWbwWa9RnCS/+6V7heEH8ZYv0YD7czF1i5nAcw33tegvFl4I+E9+SK/6brv3oTe7ziXY9aeq3SLydxMk6deLF99wQrCDQDMe3rnP3Jyfy2oc8mnrVc7KG+/mEa8dUhWTLhnPXbnyW2UXnTrfxpn22/nT3Xm8m1p6fwMnn6nvF3l938r8XU5QncK6dyfRpqalXl3KHc/oe38kGa3bs5uXZRy53ns4p5beyJr2coj1laxpvJ7fdbl/7m3txAqcw0BcxgTOHwYL79ZzHm5Qf0uh7/LkfzrWVexpnYz57HuN2ZfEvYcp2Lgvjd5Z64o9lM8o5T0s3c39ZIh7SzKe3sI8+vQSHbs9uwvSS2zvBbY+LeCy7gAVLr9RU0NNfejXnFnV9pwPf/pdz2j07VfcqW1bLbNX8NXdTS68+IH9hdf9BBafliyvllfp11S2ez5+prJpN4pdVv3hFvowMa33vVfhshIOEeOrq122UKF8VEfGUw2Ozr72iel1kxJMNj02zRfS66IinGfRb+71XlMQTLKFg33sV5ucEhJR4aiUUMDe0LkyRE0+phALnhM6FWciJJ3Krj9EdJ3FhGQTFE4iNSDmo/8ImUBRfdwlF/O101NMUX2cJRf7NVNRTFV9XCVXwW2mopyu+jhKq6DdSUE9ZfNUlVOFvq189bfFb/NVzdZunLr6qAtra28o8yIuvpIC2tiM5H/ri4xfQ1g4dF8FBfNwCqnmyqK5fzEN8PD21d6/rygAX8XFio3bthnoywUd8+AIiod1QR0YYiQ9cQGS0G6rPCyvxAW2R0q5qyA8z8YFKiJp2Q8VZYic+gDWK2lXV2WIofsMiIqrdUOWfX7AUv0G7SFi7pbL8MRW/ZgFR126oKI9cxa8T9By0GyrJJl/xq3rkol1Vk1XG4lcqIEbaDfFzy1r8vQuImXZVQY6Zi79fAbHTbog8tuMuvqT+5v1FJ9x+Rfp10jOIqZ6j+Itms3moXpq3Co5Pms3d7N1iFw//eKYPNR9eqZvHZuPQfTh2T8cnh7Xmew30lf305s2bv6r/tMnv37z53/8O85P5ib89e+eFUn2j1/ttfmRDo/9ImT27Lq5H5oQv/v43pnLYU391qv9XduY///H//kep12/+bBLfvfkv+18I+InvN+1bYvvaphWpg/6h+e7HkakPvlooUwN0Pfg3c6oTr0YfmU3ib5id4rXz/NqIH//wF/3vT6YmbA4/8RcupMef6Ab9U7t1Yvb4drws/uZU5eLtdv8h7XdKT/GTa9rH/6GySvCdbvgDwFB808l7mSu0VWHk6kNZvMWL93uZhfxPrpE39/jbH20l+P7NX0L8YH7i9X19t9w9v9CuM+FLxI9PHilWFLpz4x+8+CBtPT/xutvWbBZbbNvIZ3aXiM8Ps+E73al3Qe+Nj3+QKt6O4ZqTyLW9uszz7Vk+fpslPushMGL8g1ZvWneILwf9+ONTuycTvzDiGYrPg96Ll9vUWy7MHI7bst21bRZvJ3H+moX6977l3xB+4l85c30f8n3nf9LUb5f4f3c9OzOD43v130nt1ffdgCyblvFxv62du9dunm78w5+zcfzrMFN3DMU7dTePjfKRtWsmcy62czj3B3dD/97M2gifues33USdsTnyHfjDfAInn6u3twL79GZUGPdzm8Bp/8EO423Au7n6QAHPUPyrUztkM5Hbzx68fdBu23n72ztP59rtttvKGnheU7bttr7H3/7oh3PK9u/DxDtH8TNwgT377l16ps3pIQ0WYiwjK6B50TwpQEaPZbH0ahmFEurP67H7c27P2PTssNhyCeXAmL30KjuPz9IrLK9ewioFRPdrgabAH1QsZmWTPNTjT6iWsE750FePP5pcwroFRNw8/kx6CesXEOWgrzJvLMVvVkBU1eONGEvYvIBIqsc7cJYQpIDIqcdbr5awne87qyEzzMRv5RsOa8kIK/GhS4iE+poywUh8jBKqfSK3tt/PRny0EqpTPb6oYBlRS6iu4sdXkywjegnVogBfRrSMKkqocvV1dy4YiN/GLyCrWzsD8VV+/eMW/qa5EBdf9XeMVvLr6g93RV189SUU3z0J7bTF11REWzl0nIKu+BqLaCsni+5AVXzNRRTnt9PRTlZ87UUUoeIRCndFVDyJIgqcCRLXVICgeDJFFDAjZK4ph5x4UkUUKjOUrslDTTy1IgqhnlRdzqAlnmIRbTylQ/CaFC3xFLVbNskY1YuiI55qCVnWDXu6F0VFPN0Sylg9h7Uv6FsEDfGUS2jCarkkfk0kxNMuogKrvIghXi6CQEA88dAocd+80r+m2sXTL6Iy2/JFdzWL56bdMLPPlv66eIL+55z4m5ZqFc9P+2Wr1Xqivv6s7RJP8v17V+f6UGvvSv3rP5iNJ+mzJ/N/DAHqFM9Ouzrfe6HUtdHbVqmtA47rPf1P+rR1ai8qNSfok0mbjyx++N78Y9PeO914OQnBdcu+EfXaeNUNfpqJT/fsmxXP3YeuAXv24xnl96eGEZ80Go0D9dzU8/So0Xgre8Nk8uCqow81Hlyp4b7Z+GWe/LnZOHB7Pd306CBIdmJx2bI37vR37t2pmfisVb8j3lUQqgQR3zGme8an9Z6b7+3of7Tbrk0N7Ak+2XbJ4bsvzP/jDuj9HdLmL10brr6+I97Vhynx6VPCIR9CfK9xbD+MvuTYyrc7Bs5/x1eD4f7OVHJgTnTi7XZ6dBwgQ7HQd/FWobOeic+ET4l/tldt/lYhhPjEhXT6odb3rdkaNJxPF74LxXdVLn74pfK1hyyp67jnKSte+3W77orPd1AkjHhn63lWJLYB1/q7NrVIvMWL93sph7yWbNRnCS8+99zK8DsuW3QH8yHEmx5at7gjsanM8Eri06MdRZpC0GfiW3cCPK8J2y5ex3ajUXRn1eY6VxKfH6bLZSvv1EkX7/ry3mNiR2YFsZ18vLYzI6nuiE/KjQcp/uQ8XvuQn2rq5YkvB/3Abg4ysatFPGXx1254lvXmxHfuHImZw3EM97XcbRTvRKZPrfB85u5S6nDum6796E3u84mWO2nqt0e8Hca7CG+329f+5u4ncNxcvSrcCrZ+AseNwAr+zGh8Czt3+h5/7gZr7badzfHdPPs4Jns6N9m/9VO2PedquJ/Pt3ZMVUi2cjinZjyQT2fey7f/IU3P9uKtPt2915uJlecncPK5+l5xrr54ZxgUpgGIT+Co2YsIZsb29j+W1ff4Tmmw5t3ZJy5zns793j2dU8ofyBp42lO2c9eOXE/H/Dnhnp2K+zx+sPB2PbMEaT+kWbBkqLj0yiJ66dXi8J1ViqQfy/JbKbaAuCtweou76FMl2SHcs9sq7bUuvTKUS5Pu0ivSfw21FlhXfw845HFVahdPv1ip5289CIinXbSU87YJJMQTvocSzdbmEBGvSIYW2eoYADriqanfZuuKlnhK6unkJBK0xJMpcBq5iAk18SSa2PpzEB964lXdBS9BO1HxNRY+gfamGoiKr0e9GOuKsPg6vgqu4t9XK4TFV/4dVFX+stohLb5K9YJaeQtx8dUIaUu6uXvIi4+vXp50AwPxcdXI1M5EfDw9UrWzER9HkVztjMSH1yRZOyvxYVXJ1s5MfMDvAxOunZ34Lf4+sIphJ35zbdBuYCh+O78OrGpYil9bn8Cp2XkwFb+WQ1gvwFa82rKvA6sazuJXkQntd+At/r5CoX0K7uJLC2du3p99hj/l9iviryepEo7iL5rN5qF6aV6zMj5pNt/+INv/8I9n+lDz4ZW6eWw23rfJv82Sh+OTwzrzTQp+4m/P3nmhVN/o9UKb/2gP9B8ps2fXhfXInvDFL94uJm/PYN7DT3y/ad8b2NcirUcd9A8/0635yNQHXy2UqQGmHnxeTuqTKb90sEr4ib9wIT3+RLfgn9qtE7PHN+N3xN9JuvoCFEvxTefuZW7QVoWRqw/LxN88Rshb+InX9/Xdcu/8QsvNDC8TPz55VGFeCcNPvO6nNZvFBts28uMTt2uZ+HyHdBiKt2O45iRwba9uIraZ8Wg6qfIugng4ii8H/fjjU7vnTkTPiXiI9/AUbydx/JD8wvbWIH5F+Il/5cT1fcj3nf+pezjEL4af+L4bj/ne3MjHPTp3K8JQvDN389goH7n5uE+u7JhOYTh3bxiKb7qJOhPhI99jP8wncPK5+mwyf7d8Z8AEjoef+FendoxmArfvve+ettufm3n721lP5/KkaSIwZevhJ34W5oH76D43bzykydgG8X6hxT2CGY9lc7ZAfL4Ep78s5m/P0LPLYC++vXzpVQaWXhXgLh6rKNeEt3isnl0b1uKhfX0Yi0e4bwJb8dC+GVzFQ/uG8BSPcN8YluKhfXMYike4h4CdeGgPAzPx0B4KXuKhPRicxCPcA8JIPLSHhI14hHtYuIiH9sDwEI9wDw4H8dAeAQbioT0G5MUj3ONAXTy0R4K2eIR7NCiLh/aI0BUP7VEhKx7a40JUPMI9NjTFQ3t0KIpHuFcAQfHQXgXkxCPcq4GYeGivijrED9+bd2Sm9k43Wk4EE1F80mg0DtRz836S9KjReCt7XUXy4KqjDzUeXKnhvtn4pU+2f19K+qMH6dFBvEyKJZ74jjHdMwKt99x8b0f/o512bWpgT1icVB2YD0408b3Gsf0w5pJjK9/uGDj/HV8Nhvs7y5Pp0XGsbIolmvjEBW36oRb/rdkaWPFZu72SeFd9QEgiineynmfKhu8amQPfiK8mfriPkA9MNPGmZ9Yt7khsKlO6mvj0aCdWPqUSr3M3cF1zT3pkXaZHftdq4vMdIBQRh3O2L+/FmaGdaQAmJhsZO8uTeY8BBCPqBE4x6Ad2c9C4E8L3jHiID03kmbvEzOE4hvvaJsRTIZr4b7r2oze5zyfa5tRNG+JrIt4EjhuA5b05NxhH544K8cQ7VcP9fLq1Y6pCguEcDSJO2ZrW2Ua47t7rzcS68xM4+Wx8rzw5PzOJCZwIxLzHd0qjM6/OPnCZ/XRudtKcjynb4FT+PH6wxt0aD2nCU/1CjDWiF49lw1PDCpzeqjHfQc8uPLSWXs0ES69iQGyxJagKiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKBAvFIgXCsQLBeKFAvFCgXihQLxQIF4oEC8UiBcKxAsF4oUC8UKBeKFAvFAgXigQLxSIFwrECwXihQLxQoF4oUC8UCBeKP8PAWYMduACrvoAAAAASUVORK5CYII=" alt="plot of chunk graph1"/> </p>
+
+<p>我们把\( S_0,S_1,S_2,S_3 \)的自变量记为\( \omega_1\omega_2\omega_3 \),尽管有些随机变量并不依赖所有硬币抛掷过程。</p>
+
+<p>\( S_0 \)不是随机变量，因为不管硬币抛掷结果如何，它的值都是固定的。这样的随机变量称为<strong>退化的随机变量</strong></p>
+
+<h3>分布：</h3>
+
+<p>随机变量的分布是对随机变量取不同值的概率的具体描述</p>
+
+<blockquote>
+<p>随机变量不是分布，分布也不是随机变量<br/>
+测度的变换将改变随机变量的分布，但是不会改变随机变量本身</p>
+</blockquote>
+
+<h3>定义2.2.4 期望的定义：</h3>
+
+<p>设X为定义在有限概率空间\( (\Omega,P) \)上的随机变量。X的<strong>期望</strong>定义为：</p>
+
+<p>\( EX=\sum_{\omega}X(\omega) P(\omega) \)</p>
+
+<p>当用风险中性测度\( \tilde{P} \)  计算期望时，我们采用记号：</p>
+
+<p>\( \tilde{E}X=\sum_{\omega}X(\omega) \tilde{P}(\omega) \)</p>
+
+<blockquote>
+<p>期望满足线性性</p>
+</blockquote>
+
+<p>X的<strong>方差</strong>定义为：</p>
+
+<p>\( Var(X)=E(X-EX)^2 \)</p>
+
+<h3>定理2.2.5[詹森（Jensen）不等式]：</h3>
+
+<p>设X为定义在有限概率空间上的随机变量，\( \varphi(x) \)为哑变量 x 的凸函数（convex），则有：</p>
+
+<p>\( \varphi(EX) \le E[\varphi(X)] \)</p>
+
+<p>由Jensen不等式，直接可得：<br/>
+\( (EX)^2 \le E[X^2] \)</p>
+
+<h2>2.3 条件期望</h2>
+
+<p>第一章中二叉树定价模型中，由公式（1.1.8）选择风险中性概率\( \tilde{p} \)和\( \tilde{q} \),即</p>
+
+<p>\( \tilde{p}=\cfrac{1+r-d}{u-d} \),<br/><br/>
+\( \tilde{q}=\cfrac{u-1-r}{u-d} \) …………………… <strong>(2.3.1)</strong></p>
+
+<p>容易验证上式满足：</p>
+
+<p>\( \cfrac{\tilde{p}u+\tilde{q}d}{1+r} =1 \) …………………… <strong>(2.3.2)</strong></p>
+
+<p>因此，在每个时刻n对每个抛掷硬币结果的序列\( \omega_1\cdot\cdot\cdot\omega_n \),我们有：</p>
+
+<p>\( S_n(\omega_1\cdot\cdot\cdot\omega_n)=\cfrac{1}{1+r} [\tilde{p}S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nH)+\tilde{q}S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nT)] \)   …………………… <strong>(2.3.3)</strong></p>
+
+<p>(即股票在时刻n的价格为时刻n+1两种可能估价的加权平均贴现值，其中\( \tilde{p},\tilde{q} \)为平均权重)<br/>
+为了简化记号，定义：</p>
+
+<p>\( \tilde{E_n}[S_{n+1}](\omega_1\cdot\cdot\cdot\omega_nH)=\tilde{p}S_{n+1}\omega_1\cdot\cdot\cdot\omega_nH)+\tilde{q}S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nT) \)   …………………… <strong>(2.3.4)</strong></p>
+
+<p>这样就可以把公式（2.3.3）重写成：</p>
+
+<p>\( S_n=\cfrac{1}{1+r} \tilde{E_n}[S_{n+1}] \)…………………… <strong>(2.3.5)</strong></p>
+
+<p>并称\( \tilde{E_n}[S_{n+1}] \)为基于时刻n信息的\( S_{n+1} \)的条件期望，该条件期望可以看作是基于前n次抛掷硬币的已知结果对\( S_{n+1} \)值的一个估计。</p>
+
+<h3>定义2.3.1</h3>
+
+<p>设n满足\( 1\le n\le N \),对于给定的（前n次跑掷硬币的结果）序列\( \omega_1\cdot\cdot\cdot\omega_n \),存在\( 2^{N-n} \)种可能的后续\( \omega_{n+1}\cdot\cdot\cdot\omega_N \)。用\( \sharp H(\omega_{n+1}\cdot\cdot\cdot\omega_N) \)表示后续\( \omega_{n+1}\cdot\cdot\cdot\omega_N \)中出现正面的次数，\( \sharp T(\omega_{n+1}\cdot\cdot\cdot\omega_N) \)为出现背面的次数，我们定义：</p>
+
+<p>\( \tilde{E_n}(\omega_1\cdot\cdot\cdot\omega_n)=\sum_{\omega_{n+1}\cdot\cdot\cdot\omega_N}\tilde{p}^\sharp H(\omega_{n+1}\cdot\cdot\cdot\omega_N){q}^\sharp T(\omega_{n+1}\cdot\cdot\cdot\omega_N)X(\omega_1\cdot\cdot\cdot\omega_n) \)  …………………… <strong>(2.3.6)</strong></p>
+
+<p>并称\( \tilde{E_n} \)为基于时刻n信息的X的条件期望。<br/>
+或者写成：</p>
+
+<p>\( \tilde{E_n}(\omega_1\cdot\cdot\cdot\omega_n)=\sum_{\omega_{n+1}\cdot\cdot\cdot\omega_N}\tilde{p}^k{(1-\tilde{p})^(N-n-k)}X(\omega_1\cdot\cdot\cdot\omega_n) \)  …………………… <strong>(2.3.6.2)</strong></p>
+
+<h3>定义2.3.1（续）条件期望的两个极端情形分别是：</h3>
+
+<p>(1) \( \tilde{E_0}[X] \)————不依赖任何信息X的条件期望，定义为：</p>
+
+<p>\( \tilde{E_0}[X]=\tilde{E}[X] \)…………………… <strong>(2.3.7)</strong></p>
+
+<p>(2) \( \tilde{E_N}[X] \)————基于所有N次抛掷硬币的信息X的条件期望，定义为：</p>
+
+<p>\( \tilde{E_N}[X]=X \)…………………… <strong>(2.3.8)</strong></p>
+
+<h3>定理2.3.2（条件期望的基本性质）</h3>
+
+<p>设N为正整数，X和Y为依赖于钱N次抛掷硬币结果的随机变量。对于给定的\( 0\le n\le N \)，以下性质成立。</p>
+
+<h4>（1）条件期望的线性性。</h4>
+
+<p>对于所有常数\( c_1 \)和\( c_2 \)，我们有：</p>
+
+<p>\( E_n[c_1X+c_2Y]=c_1E_n[X]+c_2E_n[Y] \)</p>
+
+<h4>（2）提取已知量。</h4>
+
+<p>如果X实际上只依赖于前n次硬币抛掷，那么：</p>
+
+<p>\( E_n[XY]=XE_n[Y] \)</p>
+
+<h4>（3）累计条件期望。</h4>
+
+<p>如果\( 0\le n\le m\le N \),那么：</p>
+
+<p>\( E_n[E_m[X]]=E_n[X] \)</p>
+
+<p>特别地，\( E_n[E_m[X]]=E[X] \)</p>
+
+<h4>（4）独立性。</h4>
+
+<p>如果X只依赖从第n+1次至第N次抛掷硬币的结果,那么：</p>
+
+<p>\( E_n[X]=E[X] \)</p>
+
+<h4>（5）条件詹森不等式。</h4>
+
+<p>如果\( \varphi(x) \)为哑变量 x 的凸函数（convex），则有：</p>
+
+<p>\( \varphi(E_n[X]) \le E_n[\varphi(X)] \)</p>
+
+<h2>2.4 鞅</h2>
+
+<p>如果我们将（2.3.5）两边除以\( (1+r)^n \)，得：</p>
+
+<p>\( \cfrac{S_n}{(1+r)^n}=\tilde{E_n}[\cfrac{S_{n+1}}{(1+r)^{n+1}}] \)…………………… <strong>(2.4.1)</strong></p>
+
+<p>上式方程表明：在风险中性测度下，对不支付红利的股票，基于时刻n的信息对时刻n+1的股票价格贴现值的最好估计就是时刻n的股票价格贴现值。<br/>
+满足这一条件的过程被称为<strong>鞅</strong>。</p>
+
+<h3>定义2.4.1</h3>
+
+<p>考虑二叉树资产定价模型。<br/>
+设\( M_0,M_1,\cdot\cdot\cdot,M_N \)为随机变量序列，每个\( M_n \)只依赖前n次抛掷硬币（\( M_0 \)为常量）。这样的随机变量序列称为适应随机过程。</p>
+
+<p>(1) 如果<br/>
+\( M_n=E_n[M_{n+1}],n=0,1,\cdot\cdot\cdot,N-1 \)…………………… <strong>(2.4.2)</strong><br/>
+则我们称这个过程为鞅<br/>
+(2)如果<br/>
+\( M_n \le E_n[M_{n+1}],n=0,1,\cdot\cdot\cdot,N-1 \)<br/>
+则我们称这个过程为下鞅（尽管它可能有递增趋势）。<br/>
+(3)如果<br/>
+\( M_n \ge E_n[M_{n+1}],n=0,1,\cdot\cdot\cdot,N-1 \)<br/>
+则我们称这个过程为上鞅（尽管它可能有递减趋势）。</p>
+
+<p>我们可以得到：<br/>
+\( M_n=E_n[M_{m}],m=n,\cdot\cdot\cdot,N \)…………………… <strong>(2.4.3)</strong><br/>
+上式可被称为“多步超前”形式的鞅性质。</p>
+
+<h3>定理2.4.4</h3>
+
+<p>考虑一般的二叉树模型，其中0&lt;d&lt;1+r&lt;u，设风险中性概率如下给出：<br/>
+\( \tilde{p}=\cfrac{1+r-d}{u-d} \),<br/><br/>
+\( \tilde{q}=\cfrac{u-1-r}{u-d} \)<br/>
+那么在风险中性测度下，贴现股票价格过程是一个鞅，即式（2.4.1）在每个时刻n对任意的抛掷硬币结果序列都成立。</p>
+
+<h3>定理2.4.5</h3>
+
+<p>考虑N时段的二叉树模型。设\( \vartriangle_0,\vartriangle_1,\cdot\cdot\cdot,\vartriangle_{N-1} \)为适应组合过程，\( X_0 \)为实数，\( X_0,X_1,\cdot\cdot\cdot,X_N \)为由财富方程</p>
+
+<p>\( X_{n+1}=\vartriangle_nS_{n+1}+(1+r)(X_n-\vartriangle_nS_n),n=0,1,\cdot\cdot\cdot,N-1 \)<br/>
+递归产生的财富过程，那么，贴现财富过\( \frac{X_n}{(1+r)^n},n=0,1,\cdot\cdot\cdot,N \)为风险中性测度下的鞅，即：</p>
+
+<p>\( \cfrac{X_n}{(1+r)^n}=\tilde{E_n}\cfrac{X_n}{(1+r)^n},n=0,1,\cdot\cdot\cdot,N-1 \)…………………… <strong>(2.4.7)</strong></p>
+
+<h4>推论2.4.6.</h4>
+
+<p>在定理2.4.5的条件下，我们有：</p>
+
+<p>\( \tilde{E}\cfrac{X_n}{(1+r)^n}=X_0,n=0,1,\cdot\cdot\cdot,N \)…………………… <strong>(2.4.8)</strong></p>
+
+<h3>资产定价第一基本定理：</h3>
+
+<p>一般地，如果一个模型中存在一个风险中性测度，那么这个模型中就不存在套利。</p>
+
+<p>定理2.4.5的另一个结果是下面的风险中性定价公式。设\( V_N \)是一个随机变量（衍生证券在时刻N的支付），它以来与前N次抛掷硬币的结果。由定理1.2.2（多时段二叉树模型中的复制）可知存在初始财富\( X_0 \)和复制组合过程\( \vartriangle_0,\vartriangle_1,\cdot\cdot\cdot,\vartriangle_{N-1} \)，使得不论抛掷硬币的最终结果如何，相应的财富过程\( X_0,X_1,\cdot\cdot\cdot,X_N \)都满足<br/>
+\( X_N=V_N \)。因为\( \cfrac{X_n}{(1+r)^n} \)是一个鞅，由“多步超前”的鞅性质表明：</p>
+
+<p>\( \cfrac{X_n}{(1+r)^n}=\tilde{E_n}\cfrac{X_N}{(1+r)^N}=\tilde{E_n}\cfrac{V_N}{(1+r)^N} \)…………………… <strong>(2.4.9)</strong></p>
+
+<p>根据定义1.2.3，我们定义衍生证券在时刻n的价格\( X_n=V_n \)。因此，（2.4.9）又可以写成：</p>
+
+<p>\( \cfrac{V_n}{(1+r)^n}=\tilde{E_n}\cfrac{V_N}{(1+r)^N} \)…………………… <strong>(2.4.10)</strong></p>
+
+<p>或者可以等价地写成：</p>
+
+<p>\( V_n=\tilde{E_n}[\cfrac{V_N}{(1+r)^{N-n}}] \)…………………… <strong>(2.4.11)</strong><br/>
+我们将此总结为一个定理：</p>
+
+<h3>定理2.4.7（风险中性定价公式）</h3>
+
+<p>考虑N时段二叉树资产定价模型，其中0&lt;d&lt;1+r&lt;u,并且存在风险中性概率测度\( \tilde{P} \)。设\( V_N \)是一个随机变量，它依赖于抛掷硬币的结果。那么，对于0到N之间的n，衍生证券在时刻n的价格由风险中性定价公式（2.4.11）给出。进一步，在\( \tilde{P} \)之下，衍生证券的贴现价格是一个鞅，即：</p>
+
+<p>\( \cfrac{V_n}{(1+r)^n}=\tilde{E_n}\cfrac{V_{n+1}}{(1+r)^{n+1}} \)…………………… <strong>(2.4.12)</strong></p>
+
+<p>由式（2.4.11）定义的随机变量\( V_n \)与定理1.2.2中定义的随机变量\( V_n \)是一致的。</p>
+
+<p>到目前为止，我们只讨论了在某个单独日期支付的衍生证券。而许多衍生证券，如附息债券和利率互换等，会有一系列的支付。对于这样的证券，我们有以下的定价和对冲公式。</p>
+
+<h3>定理2.4.8（现金流定价）</h3>
+
+<p>考虑N时段二叉树资产定价模型，其中0&lt;d&lt;1+r&lt;u,并且存在风险中性概率测度\( \tilde{P} \)。设\( C_0,C_1,\cdot\cdot\cdot,C_N \)为随机变量序列，其中\( C_n \)之依赖于\( \omega_1\cdot\cdot\cdot\omega_n \)。在时刻n,…,N,相应的支付分别为\( C_n,\cdot\cdot\cdot,C_N \)的衍生证券在时刻n的价格为：</p>
+
+<p>\( V_n=\tilde{E_n}[\sum_{k=n}^N\cfrac{C_k}{(1+r)^{k-n}}] \),n=0,1,\cdot\cdot\cdot,N…………………… <strong>(2.4.13)</strong><br/>
+价格过程\( V_n \)，n=0,1,……,N满足：</p>
+
+<p>\( C_n(\omega_1\cdot\cdot\cdot\omega_n)=V_n(\omega_1\cdot\cdot\cdot\omega_n)-\frac{1}{1+r}[\tilde{p}S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nH)+\tilde{q}S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nT)] \)…………………… <strong>(2.4.14)</strong></p>
+
+<p>定义：<br/>
+\( \vartriangle_n(\omega_1\cdot\cdot\cdot\omega_n)=\cfrac{V_{n+1}(\omega_1\cdot\cdot\cdot\omega_nH)-V_{n+1}(\omega_1\cdot\cdot\cdot\omega_nT)}{S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nH)-S_{n+1}(\omega_1\cdot\cdot\cdot\omega_nT} \)…………………… <strong>(2.4.15)</strong><br/>
+其中n在0到N-1之间变化。如果我们令\( X_0=V_0 \)，并按时间前向递归定义资产组合价值过程\( X_1,X_2,1\cdot\cdot\cdot,X_N \)如下：</p>
+
+<p>\( X_{n+1}=\vartriangle_nS_{n+1}+(1+r)(X_n-C_n-\vartriangle_nS_{n}) \)…………………… <strong>(2.4.16)</strong></p>
+
+<p>则对所有n和\( \omega_1\cdot\cdot\cdot\omega_n \),我们有：</p>
+
+<p>\( X_n(\omega_1\cdot\cdot\cdot\omega_n)=V_n(\omega_1\cdot\cdot\cdot\omega_n) \)…………………… <strong>(2.4.17)</strong><br/>
+其中\( V_n \)为支付序列\( C_n,\cdot\cdot\cdot,C_N \)在时刻n的所谓净现值。</p>
+
+<h2>2.5 马尔可夫过程</h2>
+
+<h3>定义2.5.1  考虑二叉树资产定价模型。设\( X_0,\cdot\cdot\cdot,X_N \)为适应过程。如果对每个0到N-1之间的n以及每个函数f(x)，存在另一个函数g(x)(依赖于n和f)，使得：</h3>
+
+<p>\( E_n[f(X_{n+1})]=g(X_n) \)…………………… <strong>(2.5.1)</strong></p>
+
+<p>则称\( X_0,\cdot\cdot\cdot,X_N \)是一个马尔可夫（Markov）过程。</p>
+
+<h3>定理2.5.8</h3>
+
+<p>设\( X_0,\cdot\cdot\cdot,X_N \)为二叉树模型中的风险中性概率测度\( \tilde{P} \)下的马尔可夫过程。设\( \nu_N(x) \)为一个哑变量x的函数，考虑一个在时刻N的支付为\( \nu_N(X_N) \)的衍生证券。那么，对于每个0到N之间的n，衍生证券的价格\( V_n \)为\( X_n \)的某个函数\( \nu_n(x) \),即：<br/>
+\( V_n=\nu_n(X_n),n=0,1,\cdot\cdot\cdot,N \)…………………… <strong>(2.5.10)</strong><br/>
+存在一个计算\( \nu_n(x) \)的递归算法，确切的公式依赖于基本的马尔可夫过程\( X_0,\cdot\cdot\cdot,X_N \)。对于多维马尔可夫过程，类似结果也成立</p>
+
+<h2>2.6 小结</h2>
+
+<h3>样本空间</h3>
+
+<h3>期望、分布、条件期望</h3>
+
+<h3>鞅</h3>
+
+<h3>马尔可夫过程</h3>
+
+</body>
+
+</html>
+
